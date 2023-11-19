@@ -7,7 +7,7 @@ function Navbar() {
         <nav className='navbar'>
             <div className="navbar-container">
                 <Link to="/" className="navbar-logo" style={{color:'blue'}}>
-                    Perch <FontAwesomeIcon icon="fa-solid fa-feather-pointed" style={{color: "#f5f7fa",}} />
+                    Perch 
                 </Link>
             </div>
         </nav>
