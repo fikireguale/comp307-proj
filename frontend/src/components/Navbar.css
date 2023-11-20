@@ -1,0 +1,16 @@
+*{
+    padding: 0; 
+    margin: 0 ;
+    box-sizing: border-box;
+    background-color: #1B2432;
+}
+
+ul {
+    list-style: none;
+}
+
+Link {
+    text-decoration: none;
+    color: black;
+    font-size: 18px;
+}
