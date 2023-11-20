@@ -1,4 +1,4 @@
-import styles from "./components/Navbar.css";
+import styles from "./Navbar.css";
 import {useState, useEffect} from 'react';
 import {Link, useLocation} from 'react-router-dom';
 
