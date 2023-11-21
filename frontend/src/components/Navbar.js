@@ -2,8 +2,6 @@ import styles from "./Navbar.module.css";
 import {useState, useEffect} from 'react';
 import {Link, useLocation} from 'react-router-dom';
 
-
-
 function Navbar() {
     //adding the states 
     const [isActive, setIsActive ] = useState(false);

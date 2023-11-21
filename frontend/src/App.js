@@ -1,20 +1,18 @@
 import {BrowserRouter as Router, Route, Routes} from 'react-router-dom';
 import Discussion from './pages/discussion';
 import Landing from './pages/landing';
-import Registration from './pages/registration';
-import SignIn from './pages/signIn';
-import Navbar from './components/Navbar';
+import SignIn from './pages/SignIn';
 
 import './App.css';
+import Registration from './pages/Registration';
 
 
 function App() {
   return (
     <Router>
-      <Navbar/>
       <Routes>
         
-        <Route path='/landing' element={<Landing/>}/>
+        <Route path='/' element={<Landing/>}/>
         <Route path='/registration' element={<Registration/>}/>
         <Route path='/signIn' element={<SignIn/>}/>
       </Routes>
