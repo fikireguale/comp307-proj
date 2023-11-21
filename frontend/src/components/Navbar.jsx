@@ -1,4 +1,4 @@
-import styles from "./Navbar.css";
+import styles from "./Navbar.module.css";
 import {useState, useEffect} from 'react';
 import {Link, useLocation} from 'react-router-dom';
 
@@ -25,13 +25,11 @@ function Navbar() {
         <div className="App">
             <header className="App-header">
                 <nav className={`${styles.navbar}`}>
-                    <Link to='#home' className={`${styles.logo}`}>Perch</Link>
+                    <h1 className={`${styles.logo}`}>Perch</h1>
                     <ul className={`${styles.navMenu} ${isActive ? styles.active : ''}`}>
+                       
                         <li onClick={toggleActiveClass}>
-                            <Link to='/landing' className={`${styles.navLink}`}>Home</Link>
-                        </li>
-                        <li onClick={toggleActiveClass}>
-                            <Link to='/registration' className={`${styles.navLink}`}>Registration</Link>
+                            <Link to='/registration' className={`${styles.navLink}`}>Register</Link>
                         </li>
                         <li onClick={toggleActiveClass}>
                             <Link to='/signIn' className={`${styles.navLink}`}>Sign In</Link>
