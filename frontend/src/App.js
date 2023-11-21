@@ -3,7 +3,6 @@ import Discussion from './pages/discussion';
 import Landing from './pages/landing';
 import SignIn from './pages/SignIn';
 
-import './App.css';
 import Registration from './pages/Registration';
 
 

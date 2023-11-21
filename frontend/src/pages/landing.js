@@ -4,7 +4,14 @@ import Navbar from "../components/Navbar";
 
 const Landing = () =>{
     return (
-        <div><Navbar/></div>
+        <div >
+            <Navbar/>
+            <div className="landing"></div>
+            
+            
+            
+        </div>
+        
     )
 
 
