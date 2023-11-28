@@ -6,6 +6,7 @@
   background-color: #1B2432;
   
 }
+
 .registration h1{
   color:white;
   margin-bottom: 30px;
@@ -34,14 +35,16 @@
 }
 
 .registration button:hover {
-  box-shadow: 0 5px 10px #EEF5FF;
+  box-shadow: 0 5px 10px #7C93C3;
   transform: scale(1.05); /* Slightly increase size on hover */
 }
 
 .registration input {
-  padding: 10px;
+  width: 48%;
+  padding: 8px;
   border-radius: 25px;
   border: none;
+  box-shadow: 0 1px 7px rgb(205, 172, 206);
   margin-bottom: 25px; /* Spacing between input fields */
   
 }

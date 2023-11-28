@@ -56,6 +56,7 @@ const Registration = () =>{
         
         <div className="registration">
             <h1>Welcome</h1>
+            
             <form className="register-form" onSubmit={handleSubmit}>
                 <div className="row">
                     <input size='25' type ='text' name='firstName' placeholder="First Name" onChange={handleChange}/>
