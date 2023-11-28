@@ -1,15 +1,15 @@
 .registration {
-    display: flex;
-    justify-content: center;
-    height: 100vh;
-    width: 100vw;
-    background-color: #1B2432
-  }
+  display: flex;
+  justify-content: center;
+  height: 100vh;
+  width: 100vw;
+  background-color: #1B2432;
+}
 
 .landing {
-    display: flex;
-    justify-content: center;
-    height: 100vh;
-    width: 100vw;
-    background-color: #1B2432
+  display: flex;
+  justify-content: center;
+  height: 100vh;
+  width: 100vw;
+  background-color: #1B2432
 }

@@ -1,28 +1,44 @@
-import React from "react";
-import { Input, TextInput } from '@mantine/core';
+import React, {useState} from "react";
+
 
 const Registration = () =>{
-    // Incorrect usage, input is not accessible
-    function Incorrect() {
-        return (
-        <Input.Wrapper label="Input label">
-            <Input />
-        </Input.Wrapper>
-        );
-    }
-    
-    // Use TextInput instead of Input everywhere you want to use Input,
-    // it is accessible by default and includes Input.Wrapper
-    function Correct() {
-        return <TextInput label="Input label" description="Input description" />;
-    }
-  
+   const [data, setData] = useState({
+        fname: '',
+        lname: '',
+        email: '',
+        phoneNum: '',
+        username: '',
+        password: '',
+   });
+
+   const [errors, setErrors] = useState({});
+
+   const handleChange = (e) =>{
+    const{name, value} = e.target;
+    setData((prevData) => ({
+        ...prevData,
+        [name]:value 
+
+    }));
+
+   }
 
     return(
+        
         <div className="registration">
-            <Input placeholder="Input component" />
+            <h1 style={{color:'white', textAlign: 'center'}}>Welcome</h1>
+            <form>
+                <label> 
+                    <input type="text" />
+
+                </label>
+            </form>
+
+           
+            
         </div>
 
     )
+    
 };
 export default Registration;
