@@ -6,7 +6,18 @@
   background-color: #1B2432;
   
 }
-.registration button{
+.registration h1{
+  color:white;
+  margin-bottom: 30px;
+}
+
+.registration .row{
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+}
+
+.registration .submitButton button{
   padding: 10px 20px; 
   background-image: linear-gradient(180deg, #ffa48d, #ff4e98); 
   color: white; 
@@ -19,6 +30,7 @@
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
   transition: all 0.3s ease; 
   cursor: pointer;
+  outline: none;
 }
 
 .registration button:hover {
@@ -27,10 +39,11 @@
 }
 
 .registration input {
-  padding: 15px;
+  padding: 10px;
   border-radius: 25px;
   border: none;
   margin-bottom: 25px; /* Spacing between input fields */
+  
 }
 
 

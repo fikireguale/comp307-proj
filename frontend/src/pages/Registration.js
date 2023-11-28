@@ -55,21 +55,24 @@ const Registration = () =>{
     return(
         
         <div className="registration">
-            <h1 style={{color:'white', textAlign: 'center'}}>Welcome</h1>
+            <h1>Welcome</h1>
             <form className="register-form" onSubmit={handleSubmit}>
                 <div className="row">
-                    <input type ='text' name='firstName' placeholder="First Name" onChange={handleChange}/>
-                    <input type ='text' name='lastName' placeholder="Last Name" onChange={handleChange}/>
+                    <input size='25' type ='text' name='firstName' placeholder="First Name" onChange={handleChange}/>
+                    <input size='25' type ='text' name='lastName' placeholder="Last Name" onChange={handleChange}/>
                 </div>
                 <div className="row">
-                    <input type ='email' name='email' placeholder="Email" onChange={handleChange}/>
-                    <input type ='tel' name='phoneNumber' placeholder="Phone Number" onChange={handleChange}/>
+                    <input size='25' type ='email' name='email' placeholder="Email" onChange={handleChange}/>
+                    <input size='25' type ='tel' name='phoneNumber' placeholder="Phone Number" onChange={handleChange}/>
                 </div>
                 <div className="row">
-                    <input type ='text' name='username' placeholder="Username" onChange={handleChange}/>
-                    <input type ='password' name='password' placeholder="Password" onChange={handleChange}/>
+                    <input size='25' type ='text' name='username' placeholder="Username" onChange={handleChange}/>
+                    <input size='25' type ='password' name='password' placeholder="Password" onChange={handleChange}/>
                 </div>
-                <button type='submit' style={{textAlign:"center"}}>Submit</button>
+                <div className="submitButton">
+                    <button type='submit'>Submit</button>
+                </div>
+                
 
             </form>
         
