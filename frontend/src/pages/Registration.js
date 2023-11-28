@@ -3,10 +3,10 @@ import React, {useState} from "react";
 
 const Registration = () =>{
    const [data, setData] = useState({
-        fname: '',
-        lname: '',
+        firstName: '',
+        lastName: '',
         email: '',
-        phoneNum: '',
+        phoneNumber: '',
         username: '',
         password: '',
    });
@@ -40,28 +40,42 @@ const Registration = () =>{
     Object.keys(data).forEach((key)=>{
         if(!data[key].trim()){
             const field = key.charAt(0).toUpperCase()+ key.slice(1).replace(/([A-Z])/g, ' $1').trim();
-            errorMessages.push(`{field} is required!`);
+            errorMessages.push(`${field} is required!`);
         }
     });
 
-   }
+    //Do not submit the form since there is an error message
+    if(errorMessages.length > 0 ){
+        alert(`Please complete the following fields: \n${errorMessages.join('\n')}`);
+    }
+    else{console.log(data);}
+
+   };
 
     return(
         
         <div className="registration">
             <h1 style={{color:'white', textAlign: 'center'}}>Welcome</h1>
-            <form>
-                <label> 
-                    <input type="text" />
+            <form className="register-form" onSubmit={handleSubmit}>
+                <div className="row">
+                    <input type ='text' name='firstName' placeholder="First Name" onChange={handleChange}/>
+                    <input type ='text' name='lastName' placeholder="Last Name" onChange={handleChange}/>
+                </div>
+                <div className="row">
+                    <input type ='email' name='email' placeholder="Email" onChange={handleChange}/>
+                    <input type ='tel' name='phoneNumber' placeholder="Phone Number" onChange={handleChange}/>
+                </div>
+                <div className="row">
+                    <input type ='text' name='username' placeholder="Username" onChange={handleChange}/>
+                    <input type ='password' name='password' placeholder="Password" onChange={handleChange}/>
+                </div>
+                <button type='submit' style={{textAlign:"center"}}>Submit</button>
 
-                </label>
             </form>
-
-           
-            
+        
         </div>
 
-    )
+    );
     
 };
 export default Registration;

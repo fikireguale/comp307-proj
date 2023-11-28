@@ -19,22 +19,22 @@ a {
 
 
 .navLink {
-  padding: 10px 20px; /* Adjust the padding as needed */
-  background-image: linear-gradient(180deg, #ffa48d, #ff4e98); /* Vertical gradient */
-  color: white; /* Text color */
-  font-weight: bold; /* Bold text */
-  border: none; /* No border */
-  border-radius: 25px; /* Rounded corners */
-  text-align: center; /* Center text */
-  text-decoration: none; /* No underline */
-  display:inline-block; /* Allows padding and width/height */
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-  transition: all 0.3s ease; /* Transition for effects */
-  cursor: pointer; /* Hand cursor on hover */
+  padding: 10px 20px; 
+  background-image: linear-gradient(180deg, #ffa48d, #ff4e98); 
+  color: white; 
+  font-weight: bold; 
+  border: none; 
+  border-radius: 25px; 
+  text-align: center; 
+  text-decoration: none; 
+  display:inline-block; 
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+  transition: all 0.3s ease; 
+  cursor: pointer;
 }
 
 .navLink:hover {
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); /* Larger shadow on hover */
+  box-shadow: 0 5px 15px #FEFAE0; /* Larger shadow on hover */
   transform: scale(1.05); /* Slightly increase size on hover */
 }
 

@@ -101,7 +101,7 @@
   
     .navLink {
       display: block;
-      width: 100%; /* Full width links */
+      width: 100%; 
     }
   
     /* Styling for the active state of the hamburger bars to create an 'X' icon */

@@ -4,7 +4,35 @@
   height: 100vh;
   width: 100vw;
   background-color: #1B2432;
+  
 }
+.registration button{
+  padding: 10px 20px; 
+  background-image: linear-gradient(180deg, #ffa48d, #ff4e98); 
+  color: white; 
+  font-weight: bold; 
+  border: none; 
+  border-radius: 25px; 
+  text-align: center; 
+  text-decoration: none; 
+  display:inline-block; 
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+  transition: all 0.3s ease; 
+  cursor: pointer;
+}
+
+.registration button:hover {
+  box-shadow: 0 5px 10px #EEF5FF;
+  transform: scale(1.05); /* Slightly increase size on hover */
+}
+
+.registration input {
+  padding: 15px;
+  border-radius: 25px;
+  border: none;
+  margin-bottom: 25px; /* Spacing between input fields */
+}
+
 
 .landing {
   display: flex;
