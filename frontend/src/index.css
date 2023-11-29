@@ -92,16 +92,15 @@
 
 .signIn h3{
   color:white;
-  font-family:'Didot', serif;
+  font-family:'Bookman', 'URW Bookman L', serif;
   
-  
-
+  padding-top: 130px;
 }
 .signIn .circle1{
   width: 450px;
   height:450px;
   border-radius: 50%; /*make it round*/
-  border: 1.5px solid #675E9C; 
+  border: 1.5px solid #FBC490; 
   background-color: transparent;
   position:absolute;
   top:50%;
@@ -112,7 +111,7 @@
   width: 450px;
   height:450px;
   border-radius: 50%; /*make it round*/
-  border: 1.5px solid pink; 
+  border: 1.5px solid #562B08; 
   background-color: transparent;
   position:absolute;
   top:48%;
@@ -123,7 +122,7 @@
   width: 450px;
   height:450px;
   border-radius: 50%; /*make it round*/
-  border: 1.5px solid #9E4784; 
+  border: 1.5px solid #647E68; 
   background-color: transparent;
   position:absolute;
   top:51%;
@@ -135,7 +134,7 @@
   width: 450px;
   height:450px;
   border-radius: 50%; /*make it round*/
-  border: 1.5px solid #FFDBC3; 
+  border: 1.5px solid #DCD7C9; 
   background-color: transparent;
   position:absolute;
   top:50%;
@@ -147,11 +146,11 @@
   width: 450px;
   height:450px;
   border-radius: 50%; /*make it round*/
-  border: 1.5px solid #FFDBC3; 
+  border: 1.5px solid #CD8D7B; 
   background-color: transparent;
   position:absolute;
   top:50%;
   left:49%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);/*shift the element up and left by half half*/
 }
 
