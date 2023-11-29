@@ -5,7 +5,6 @@
   justify-content: center;
   height: 100vh;
   width: 100vw;
-  
   padding: 50px;
   background: linear-gradient(-140deg, #974EC3 5%, #1B2432 38%);
   
@@ -87,8 +86,12 @@
   justify-content: center;
   height: 100vh;
   width: 100vw;
-  background-color: #1B2432
+  background-color: #1B2432;
+  background-image: linear-gradient(55deg, #317b8c 5%, #1B2432 30%, #1B2432 70%, #fec376 5%);
+  
+  
 }
+
 
 .signIn h3{
   color:white;
@@ -135,7 +138,7 @@
   color: white; 
   background-color: transparent;
   font-weight: bold; 
-  border: none; 
+  border: 1px solid; 
   border-radius: 25px; 
   text-decoration: none; 
   display:inline-block; 
@@ -159,7 +162,7 @@
   color: white; 
   background-color: transparent;
   font-weight: bold; 
-  border: none; 
+  border: 1px solid;
   border-radius: 25px; 
   text-decoration: none; 
   display:inline-block; 
@@ -183,7 +186,7 @@
   width: 450px;
   height:450px;
   border-radius: 50%; /*make it round*/
-  border: 1.5px solid #FBC490; 
+  border: 1.5px solid #ba9699; 
   background-color: transparent;
   position:absolute;
   top:50%;
@@ -194,7 +197,7 @@
   width: 450px;
   height:450px;
   border-radius: 50%; /*make it round*/
-  border: 1.5px solid #E7B2A5; 
+  border: 1.5px solid #EADBC8; 
   background-color: transparent;
   position:absolute;
   top:48%;
@@ -205,7 +208,7 @@
   width: 450px;
   height:450px;
   border-radius: 50%; /*make it round*/
-  border: 1.5px solid #647E68; 
+  border: 1.5px solid #c46c4c; 
   background-color: transparent;
   position:absolute;
   top:51%;
@@ -217,7 +220,7 @@
   width: 450px;
   height:450px;
   border-radius: 50%; /*make it round*/
-  border: 1.5px solid #DCD7C9; 
+  border: 1.5px solid #fea789; 
   background-color: transparent;
   position:absolute;
   top:50%;
@@ -229,7 +232,7 @@
   width: 450px;
   height:450px;
   border-radius: 50%; /*make it round*/
-  border: 1.5px solid #CD8D7B; 
+  border: 1.5px solid #FFC5C5; 
   background-color: transparent;
   position:absolute;
   top:50%;
