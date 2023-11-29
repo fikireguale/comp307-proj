@@ -74,9 +74,9 @@ const SignIn = () =>{
                 </div>
 
                 <div className="buttons">
-                    <button>Sign In</button>
+                    <button className="signin">Sign In</button>
                     {/*In case someone is not sure that they don't have the account*/}
-                    <button onClick={redirectToRegistration}>Sign Up</button>
+                    <button className="signup" onClick={redirectToRegistration}>Sign Up</button>
                 </div>
            
             </form>

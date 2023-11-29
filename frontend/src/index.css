@@ -92,10 +92,11 @@
 
 .signIn h3{
   color:white;
-  font-family:'Bookman', 'URW Bookman L', serif;
+  font-family: 'Snell Roundhand', 'cursive';
   padding-top: 130px;
   text-align: center;
 }
+
 .signIn .login-form{
   position: relative;
   margin-bottom: 15px;
@@ -109,48 +110,74 @@
   border-bottom: 2px solid #FFF2D8;
   outline: none;
   color: white;
-  font-family: 'Snell Roundhand', cursive;
+  font-family: 'Snell Roundhand', 'cursive';
   font-size: 1.0em;
   text-align: center;
+  transition: all 0.3s ease-in-out;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 .signIn .buttons{
-  display:flex;
+  display: flex;
+  flex-direction: column;
   justify-content: center;
-  padding:20px 0;
+  padding:15px 0;
+  align-items: center;
   
 }
 
-.signIn button{
-  padding: 10px 20px; 
+
+.signIn .buttons .signin{
+  padding: 8px 15px;
+  font-size:1.02em;
+  width: 95px;
   text-align: center; 
-  background-image: linear-gradient(180deg, #ffa48d, #ff4e98); 
   color: white; 
+  background-color: transparent;
   font-weight: bold; 
   border: none; 
   border-radius: 25px; 
   text-decoration: none; 
   display:inline-block; 
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
-  transition: all 0.3s ease; 
   cursor: pointer;
   outline: none;
+  margin-bottom: 15px;
+  font-family: 'Snell Roundhand', 'cursive';
 }
+.signIn .buttons .signin:hover {
+  box-shadow: 0 5px 10px #7C93C3;
+  transform: scale(1.05); /* Slightly increase size on hover */
+  background-image: linear-gradient(180deg, #ffa48d, #ff4e98); 
+}
+
+.signIn .buttons .signup{
+  font-family: 'Snell Roundhand', 'cursive';
+  font-size:1.00em;
+  padding: 8px 15px;
+  width: 95px;
+  text-align: center; 
+  color: white; 
+  background-color: transparent;
+  font-weight: bold; 
+  border: none; 
+  border-radius: 25px; 
+  text-decoration: none; 
+  display:inline-block; 
+  cursor: pointer;
+  outline: none;
+  margin-bottom: 15px;
+}
+.signIn .buttons .signup:hover {
+  box-shadow: 0 5px 10px #7C93C3;
+  transform: scale(1.05); /* Slightly increase size on hover */
+  background-image: linear-gradient(180deg, #ffa48d, #ff4e98); 
+}
+
+
+.signIn button:last-child {
+  margin-bottom: 0; /* Remove margin for the last button */
+}
+
 
 .signIn .circle1{
   width: 450px;
@@ -167,7 +194,7 @@
   width: 450px;
   height:450px;
   border-radius: 50%; /*make it round*/
-  border: 1.5px solid #562B08; 
+  border: 1.5px solid #E7B2A5; 
   background-color: transparent;
   position:absolute;
   top:48%;
