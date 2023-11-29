@@ -5,14 +5,19 @@
   justify-content: center;
   height: 100vh;
   width: 100vw;
-  background-color: #1B2432;
+  
   padding: 50px;
+  background: linear-gradient(-140deg, #974EC3 5%, #1B2432 38%);
+  
 }
-
 .registration h1{
-  color:white;
+  font-family:'Brush Script MT', 'Brush Script Std', cursive;
+  color:#F0ECE5;
   margin-bottom: 30px;
   text-align: center;
+  font-style: italic;
+  font-size: 50px;
+ 
 }
 
 .registration .row{
@@ -23,6 +28,12 @@
   max-width: 600px;
   
 }
+.registration .submitButton{
+  display:flex;
+  justify-content: center;
+  padding:20px 0;
+}
+
 
 .registration .submitButton button{
   padding: 10px 20px; 
@@ -51,10 +62,15 @@
   padding: 9px;
   border-radius: 25px;
   border: none;
-  box-shadow: 0 1px 7px rgb(205, 172, 206);
+  box-shadow: 0 2px 7px #80185F;
   margin-bottom: 30px; /* Spacing between input fields */
   display: flex;
   
+}
+/*to be determined*/
+.registration input:hover {
+  box-shadow: 0 5px 10px #7C93C3;
+  transform: scale(1.05); /* Slightly increase size on hover */
 }
 
 
