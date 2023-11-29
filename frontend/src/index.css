@@ -102,7 +102,7 @@
 }
 .signIn .login-form input{
   width: 100%;
-  padding: 10px;
+  padding: 9px;
   margin: 25px 0 ;
   background: transparent;
   border: none;
@@ -110,13 +110,32 @@
   outline: none;
   color: white;
   font-family: 'Snell Roundhand', cursive;
+  font-size: 1.0em;
+  text-align: center;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 .signIn .buttons{
   display:flex;
   justify-content: center;
   padding:20px 0;
   
 }
+
 .signIn button{
   padding: 10px 20px; 
   text-align: center; 
