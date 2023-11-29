@@ -90,6 +90,13 @@
   background-color: #1B2432
 }
 
+.signIn h3{
+  color:white;
+  font-family:'Didot', serif;
+  
+  
+
+}
 .signIn .circle1{
   width: 450px;
   height:450px;
@@ -105,10 +112,46 @@
   width: 450px;
   height:450px;
   border-radius: 50%; /*make it round*/
-  border: 1.5px solid #675E9C; 
+  border: 1.5px solid pink; 
   background-color: transparent;
   position:absolute;
   top:48%;
   left:50%;
   transform: translate(-50%, -50%);
 }
+.signIn .circle3{
+  width: 450px;
+  height:450px;
+  border-radius: 50%; /*make it round*/
+  border: 1.5px solid #9E4784; 
+  background-color: transparent;
+  position:absolute;
+  top:51%;
+  left:49%;
+  transform: translate(-50%, -50%);
+}
+
+.signIn .circle4{
+  width: 450px;
+  height:450px;
+  border-radius: 50%; /*make it round*/
+  border: 1.5px solid #FFDBC3; 
+  background-color: transparent;
+  position:absolute;
+  top:50%;
+  left:51%;
+  transform: translate(-50%, -50%);
+}
+
+.signIn .circle5{
+  width: 450px;
+  height:450px;
+  border-radius: 50%; /*make it round*/
+  border: 1.5px solid #FFDBC3; 
+  background-color: transparent;
+  position:absolute;
+  top:50%;
+  left:49%;
+  transform: translate(-50%, -50%);
+}
+
