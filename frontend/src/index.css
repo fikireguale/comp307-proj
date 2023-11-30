@@ -6,9 +6,21 @@
   background-color: #1B2432
 }
 .landing h2{
-  color: #EEE2DE;
+  font-size: 25px;
+  white-space: nowrap; /* prevent the text from wrapping */
+  color: #FDF7E4;
   font-family: 'Snell Roundhand', 'cursive';
+  padding: 100px 
 }
+/* when the cursor is on the letter, it bounces*/
+.bounce{
+  display: inline-block;
+  transition: transform 0.3s;
+}
+.bounce:hover{
+  transform:translateY(-12px)
+}
+
 
 
 
