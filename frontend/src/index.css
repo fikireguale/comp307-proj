@@ -87,7 +87,7 @@
   height: 100vh;
   width: 100vw;
   background-color: #1B2432;
-  background-image: linear-gradient(55deg, #317b8c 5%, #1B2432 30%, #1B2432 70%, #fec376 5%);
+  background-image: linear-gradient(to top, #1A2A5E 45%, #e28743 100%);
   
   
 }
