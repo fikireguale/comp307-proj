@@ -1,11 +1,18 @@
 import React from "react";
 import Navbar from "../components/Navbar";
 import tree from "../components/tree";
+import { useNavigate } from 'react-router-dom';
 
 
 const Landing = () =>{
+    const navigate = useNavigate();
     const headline1 = "Beyond words, Above Expectations -"
     const headline2 = "Your Nest for Exceptional Communication!"
+
+    const toPerch = () => {
+        navigate('/')
+    }
+    
     return (
         <div >
             <Navbar/>
@@ -29,7 +36,7 @@ const Landing = () =>{
 
                     <div className="buttons">
                         <button>Download to your Desktop</button>
-                        <button>Open Perch in your browser</button>
+                        <button onClick={toPerch}>Open Perch in your browser</button>
 
 
                     </div>

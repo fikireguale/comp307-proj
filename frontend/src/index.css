@@ -32,7 +32,7 @@
   font-weight:200;
   border-color:white;
   border-width: 0.01cap;
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-family: 'Gill Sans', 'Gill Sans MT', 'Calibri', 'Trebuchet MS', sans-serif;
 }
 .landing .buttons button:hover{
   box-shadow: 0 5px 10px #7C93C3;
@@ -154,6 +154,9 @@
   transition: all 0.3s ease-in-out;
 }
 
+.signIn .login-form input::placeholder{
+  color:#FFF2D8
+}
 
 .signIn .buttons{
   display: flex;
