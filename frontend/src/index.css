@@ -1,19 +1,21 @@
 .landing {
   display: flex;
+  align-items: center;
   justify-content: center;
   height: 100vh;
   width: 100vw;
   background-color: #1B2432;
   background-image: url('./assets/tree.png'), url('./assets/birds.png');
   background-repeat: no-repeat , no-repeat;
-  background-position: 1% 70%, 100% 0.1px;
+  background-position: -8% 100%, 100% 0.1px;
+  background-size: 35%;
 }
 .landing h2{
   font-size: 25px;
   white-space: nowrap; /* prevent the text from wrapping */
   color: #FDF7E4;
   font-family: 'Snell Roundhand', 'cursive';
-  padding: 100px; 
+  padding: 70px; 
   
 
 }
@@ -27,8 +29,8 @@
 }
 
 .landing .buttons button{
-  margin: 40px;
-  padding: 20px 50px;
+  margin: 30px;
+  padding: 20px 40px;
   border-radius: 25px;
   background:linear-gradient(90deg, #7b53bd, #d669bb);
   text-align: center;
@@ -129,11 +131,13 @@
   width: 100vw;
   background-color: #1B2432;
   /*background: linear-gradient(to bottom, #780206, #061161);*/
-  background-image: url('./assets/huge_bird.png');
-  background-repeat: no-repeat;
-  background-position: 100% 10%;
+  background-image: url('./assets/huge_bird.png'), url('./assets/leaf.png'),url('./assets/star.png'),url('./assets/flower.png'),url('./assets/flower2.png'),url('./assets/lavender.png') ;
+  background-repeat: no-repeat, no-repeat, no-repeat,no-repeat, no-repeat, no-repeat;
+  background-position: 90% 1%, -4% -6%, 25% 110%, -2% 100%, 100% 100%, 75% 115%;
+  background-attachment: fixed, fixed, fixed, fixed, fixed, fixed;
+  background-size: auto, 200px 200px,150px 150px, 340px 340px, 300px 300px;
   
-  
+
 }
 
 .signIn h3{
