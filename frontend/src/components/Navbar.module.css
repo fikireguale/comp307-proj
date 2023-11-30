@@ -128,8 +128,14 @@ a {
   }
   .navLink{
     background: none;
+    border: none;
+    padding:10px 250px; 
+    margin:0;
+    box-shadow:none;
+    border-radius: 10px;
   }
 
 }
+
 
 
