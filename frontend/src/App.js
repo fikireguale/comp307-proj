@@ -1,7 +1,7 @@
 import {BrowserRouter as Router, Route, Routes} from 'react-router-dom';
 import Discussion from './pages/discussion';
 import Landing from './pages/landing';
-import SignIn from './pages/SignIn';
+import SignIn from './pages/signIn';
 import Registration from './pages/Registration';
 
 
