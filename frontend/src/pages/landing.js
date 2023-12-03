@@ -1,6 +1,5 @@
 import React from "react";
 import Navbar from "../components/Navbar";
-import tree from "../components/tree";
 import { useNavigate } from 'react-router-dom';
 
 
