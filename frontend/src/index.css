@@ -120,13 +120,14 @@
   box-shadow: 0 2px 7px #80185F;
   margin-bottom: 30px; /* Spacing between input fields */
   display: flex;
-  
+  color: white;
 }
 
 .registration input:hover {
   background-color:transparent;
   box-shadow: 0 5px 10px #7C93C3;
   transform: scale(1.05); /* Slightly increase size on hover */
+  color: white;
 }
 
 
@@ -175,7 +176,7 @@
 .signIn .login-form input::placeholder{
   color:#FFF2D8
 }
-.signIn .buttons .signin, .signIn .buttons .signup {
+.signIn .buttons .signin, .signIn .buttons .signup , .signIn .login-form input{
   z-index: 10; 
   position: relative; 
 }
