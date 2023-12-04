@@ -1,6 +1,6 @@
 
 * {
- 
+  overflow: hidden;
   padding: 0;
   margin: 0;
   box-sizing: border-box;
@@ -18,9 +18,8 @@ a {
   color: white;
   font-size: 18px;
 }
-
-
 .navLink {
+  
   padding: 10px 20px; 
   background-image: linear-gradient(180deg, #ffa48d, #ff4e98); 
   color: white; 
@@ -44,7 +43,7 @@ a {
 
 /* navbar */
 .navbar {
-  
+  overflow: hidden;
   background-color:#1B2432;
   padding: 10px 20px;
   display: flex;

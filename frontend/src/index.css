@@ -1,4 +1,5 @@
 .landing {
+  overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -50,6 +51,7 @@
 
 
 .registration {
+  background-color:transparent;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -67,10 +69,12 @@
   text-align: center;
   font-style: italic;
   font-size: 50px;
+  background-color:transparent;
  
 }
 
 .registration .row{
+  background-color:transparent;
   display: flex;
   justify-content: space-between;
   margin-bottom: 15px;
@@ -108,6 +112,7 @@
 }
 
 .registration input {
+  background-color:transparent;
   width: calc(50% - 10px); 
   padding: 9px;
   border-radius: 25px;
@@ -119,12 +124,14 @@
 }
 
 .registration input:hover {
+  background-color:transparent;
   box-shadow: 0 5px 10px #7C93C3;
   transform: scale(1.05); /* Slightly increase size on hover */
 }
 
 
 .signIn {
+  overflow: visible;
   display: flex;
   justify-content: center;
   height: 100vh;
@@ -136,7 +143,6 @@
   background-position: 90% 1%, -4% -6%, 25% 110%, -2% 100%, 100% 100%, 75% 115%;
   background-attachment: fixed, fixed, fixed, fixed, fixed, fixed;
   background-size: auto, 200px 200px,150px 150px, 340px 340px, 300px 300px;
-  
 
 }
 
@@ -169,7 +175,10 @@
 .signIn .login-form input::placeholder{
   color:#FFF2D8
 }
-
+.signIn .buttons .signin, .signIn .buttons .signup {
+  z-index: 10; 
+  position: relative; 
+}
 .signIn .buttons{
   display: flex;
   flex-direction: column;
@@ -233,6 +242,7 @@
 
 
 .signIn .circle1{
+  z-index: 1;
   width: 450px;
   height:450px;
   border-radius: 50%; /*make it round*/
@@ -244,6 +254,7 @@
   transform: translate(-50%, -50%);
 }
 .signIn .circle2{
+  z-index: 1;
   width: 450px;
   height:450px;
   border-radius: 50%; /*make it round*/
@@ -255,6 +266,7 @@
   transform: translate(-50%, -50%);
 }
 .signIn .circle3{
+  z-index: 1;
   width: 450px;
   height:450px;
   border-radius: 50%; /*make it round*/
@@ -267,6 +279,7 @@
 }
 
 .signIn .circle4{
+  z-index: 1;
   width: 450px;
   height:450px;
   border-radius: 50%; /*make it round*/
@@ -279,6 +292,7 @@
 }
 
 .signIn .circle5{
+  z-index: 1;
   width: 450px;
   height:450px;
   border-radius: 50%; /*make it round*/
