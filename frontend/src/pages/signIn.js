@@ -1,12 +1,14 @@
 import React, {useState} from "react";
+import { useNavigate } from "react-router-dom";
 
 
-const Registration = () =>{
-   const [data, setData] = useState({
-        firstName: '',
-        lastName: '',
-        email: '',
-        phoneNumber: '',
+const SignIn = () =>{
+    const navigate = useNavigate(); //navigate function
+    const redirectToRegistration = () =>{
+        navigate('/Registration');
+    }
+
+    const [data, setData] = useState({
         username: '',
         password: '',
    });
@@ -52,34 +54,44 @@ const Registration = () =>{
 
    };
 
-    return(
-        
-        <div className="registration">
-            <h1>Welcome</h1>
+
+    return (
+        <div className="signIn" >
+            <div className="circle1"></div>
+            <div className="circle2"></div>
+            <div className="circle3"></div>
+            <div className="circle4"></div>
+            <div className="circle5"></div>
             
-            <form className="register-form" onSubmit={handleSubmit}>
-                <div className="row">
-                    <input size='25' type ='text' name='firstName' placeholder="First Name" onChange={handleChange}/>
-                    <input size='25' type ='text' name='lastName' placeholder="Last Name" onChange={handleChange}/>
-                </div>
-                <div className="row">
-                    <input size='25' type ='email' name='email' placeholder="Email" onChange={handleChange}/>
-                    <input size='25' type ='tel' name='phoneNumber' placeholder="Phone Number" onChange={handleChange}/>
-                </div>
+            <form className="login-form" onSubmit={handleSubmit}>
+                <h3>Please enter your username and password</h3>
                 <div className="row">
                     <input size='25' type ='text' name='username' placeholder="Username" onChange={handleChange}/>
+                </div>
+
+                <div className="row">
                     <input size='25' type ='password' name='password' placeholder="Password" onChange={handleChange}/>
                 </div>
-                <div className="submitButton">
-                    <button type='submit'>Submit</button>
+
+                <div className="buttons">
+                    <button className="signin">Sign In</button>
+                    {/*In case someone is not sure that they don't have the account*/}
+                    <button className="signup" onClick={redirectToRegistration}>Sign Up</button>
                 </div>
-                
-
+           
             </form>
-        
-        </div>
+            
+            
 
+
+            
+
+
+        </div>
     );
-    
+   
+
+
 };
-export default Registration;
+
+export default SignIn;

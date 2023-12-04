@@ -1,13 +1,306 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+.landing {
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  width: 100vw;
+  background-color: #1B2432;
+  background-image: url('./assets/tree.png'), url('./assets/birds.png');
+  background-repeat: no-repeat , no-repeat;
+  background-position: -8% 100%, 100% 0.1px;
+  background-size: 35%;
+}
+.landing h2{
+  font-size: 25px;
+  white-space: nowrap; /* prevent the text from wrapping */
+  color: #FDF7E4;
+  font-family: 'Snell Roundhand', 'cursive';
+  padding: 70px; 
+
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+/* when the cursor is on the letter, it bounces*/
+.bounce{
+  display: inline-block;
+  transition: transform 0.3s;
 }
+.bounce:hover{
+  transform:translateY(-12px)
+}
+
+.landing .buttons button{
+  margin: 30px;
+  padding: 20px 40px;
+  border-radius: 25px;
+  background:linear-gradient(90deg, #7b53bd, #d669bb);
+  text-align: center;
+  color:white;
+  font-size: 15px ;
+  font-weight:200;
+  border-color:white;
+  border-width: 0.01cap;
+  font-family: 'Gill Sans', 'Gill Sans MT', 'Calibri', 'Trebuchet MS', sans-serif;
+}
+.landing .buttons button:hover{
+  box-shadow: 0 5px 10px #7C93C3;
+  transform: scale(1.05);
+  background: #8355BD;
+}
+
+
+
+.registration {
+  background-color:transparent;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  width: 100vw;
+  padding: 50px;
+  background: linear-gradient(-140deg, #974EC3 5%, #1B2432 38%);
+  
+}
+.registration h1{
+  font-family:'Brush Script MT', 'Brush Script Std', 'cursive';
+  color:#F0ECE5;
+  margin-bottom: 30px;
+  text-align: center;
+  font-style: italic;
+  font-size: 50px;
+  background-color:transparent;
+ 
+}
+
+.registration .row{
+  background-color:transparent;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+  width: 100%;
+  max-width: 600px;
+  
+}
+.registration .submitButton{
+  display:flex;
+  justify-content: center;
+  padding:20px 0;
+}
+
+
+.registration .submitButton button{
+  padding: 10px 20px; 
+  text-align: center; 
+  background-image: linear-gradient(180deg, #ffa48d, #ff4e98); 
+  color: white; 
+  font-weight: bold; 
+  border: none; 
+  border-radius: 25px; 
+  text-decoration: none; 
+  display:inline-block; 
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+  transition: all 0.3s ease; 
+  cursor: pointer;
+  outline: none;
+  
+}
+
+.registration button:hover {
+  box-shadow: 0 5px 10px #7C93C3;
+  transform: scale(1.05); /* Slightly increase size on hover */
+}
+
+.registration input {
+  background-color:transparent;
+  width: calc(50% - 10px); 
+  padding: 9px;
+  border-radius: 25px;
+  border: none;
+  box-shadow: 0 2px 7px #80185F;
+  margin-bottom: 30px; /* Spacing between input fields */
+  display: flex;
+  
+}
+
+.registration input:hover {
+  background-color:transparent;
+  box-shadow: 0 5px 10px #7C93C3;
+  transform: scale(1.05); /* Slightly increase size on hover */
+}
+
+
+.signIn {
+  overflow: visible;
+  display: flex;
+  justify-content: center;
+  height: 100vh;
+  width: 100vw;
+  background-color: #1B2432;
+  /*background: linear-gradient(to bottom, #780206, #061161);*/
+  background-image: url('./assets/huge_bird.png'), url('./assets/leaf.png'),url('./assets/star.png'),url('./assets/flower.png'),url('./assets/flower2.png'),url('./assets/lavender.png') ;
+  background-repeat: no-repeat, no-repeat, no-repeat,no-repeat, no-repeat, no-repeat;
+  background-position: 90% 1%, -4% -6%, 25% 110%, -2% 100%, 100% 100%, 75% 115%;
+  background-attachment: fixed, fixed, fixed, fixed, fixed, fixed;
+  background-size: auto, 200px 200px,150px 150px, 340px 340px, 300px 300px;
+
+}
+
+.signIn h3{
+  color:white;
+  font-family: 'Snell Roundhand', 'cursive';
+  padding-top: 130px;
+  text-align: center;
+}
+
+.signIn .login-form{
+  position: relative;
+  margin-bottom: 15px;
+}
+.signIn .login-form input{
+  width: 100%;
+  padding: 9px;
+  margin: 25px 0 ;
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid #FFF2D8;
+  outline: none;
+  color: white;
+  font-family: 'Snell Roundhand', 'cursive';
+  font-size: 1.0em;
+  text-align: center;
+  transition: all 0.3s ease-in-out;
+}
+
+.signIn .login-form input::placeholder{
+  color:#FFF2D8
+}
+.signIn .buttons .signin, .signIn .buttons .signup {
+  z-index: 10; 
+  position: relative; 
+}
+.signIn .buttons{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding:15px 0;
+  align-items: center;
+  
+}
+
+
+.signIn .buttons .signin{
+  padding: 8px 15px;
+  font-size:1.02em;
+  width: 95px;
+  text-align: center; 
+  color: white; 
+  background-color: transparent;
+  font-weight: bold; 
+  border: 1px solid; 
+  border-radius: 25px; 
+  text-decoration: none; 
+  display:inline-block; 
+  cursor: pointer;
+  outline: none;
+  margin-bottom: 15px;
+  font-family: 'Snell Roundhand', 'cursive';
+}
+.signIn .buttons .signin:hover {
+  box-shadow: 0 5px 10px #7C93C3;
+  transform: scale(1.05); /* Slightly increase size on hover */
+  background-image: linear-gradient(180deg, #ffa48d, #ff4e98); 
+}
+
+.signIn .buttons .signup{
+  font-family: 'Snell Roundhand', 'cursive';
+  font-size:1.00em;
+  padding: 8px 15px;
+  width: 95px;
+  text-align: center; 
+  color: white; 
+  background-color: transparent;
+  font-weight: bold; 
+  border: 1px solid;
+  border-radius: 25px; 
+  text-decoration: none; 
+  display:inline-block; 
+  cursor: pointer;
+  outline: none;
+  margin-bottom: 15px;
+}
+.signIn .buttons .signup:hover {
+  box-shadow: 0 5px 10px #7C93C3;
+  transform: scale(1.05); /* Slightly increase size on hover */
+  background-image: linear-gradient(180deg, #ffa48d, #ff4e98); 
+}
+
+
+.signIn button:last-child {
+  margin-bottom: 0; /* Remove margin for the last button */
+}
+
+
+.signIn .circle1{
+  z-index: 1;
+  width: 450px;
+  height:450px;
+  border-radius: 50%; /*make it round*/
+  border: 1.5px solid #ba9699; 
+  background-color: transparent;
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform: translate(-50%, -50%);
+}
+.signIn .circle2{
+  z-index: 1;
+  width: 450px;
+  height:450px;
+  border-radius: 50%; /*make it round*/
+  border: 1.5px solid #EADBC8; 
+  background-color: transparent;
+  position:absolute;
+  top:48%;
+  left:50%;
+  transform: translate(-50%, -50%);
+}
+.signIn .circle3{
+  z-index: 1;
+  width: 450px;
+  height:450px;
+  border-radius: 50%; /*make it round*/
+  border: 1.5px solid #c46c4c; 
+  background-color: transparent;
+  position:absolute;
+  top:51%;
+  left:49%;
+  transform: translate(-50%, -50%);
+}
+
+.signIn .circle4{
+  z-index: 1;
+  width: 450px;
+  height:450px;
+  border-radius: 50%; /*make it round*/
+  border: 1.5px solid #fea789; 
+  background-color: transparent;
+  position:absolute;
+  top:50%;
+  left:51%;
+  transform: translate(-50%, -50%);
+}
+
+.signIn .circle5{
+  z-index: 1;
+  width: 450px;
+  height:450px;
+  border-radius: 50%; /*make it round*/
+  border: 1.5px solid #FFC5C5; 
+  background-color: transparent;
+  position:absolute;
+  top:50%;
+  left:49%;
+  transform: translate(-50%, -50%);/*shift the element up and left by half half*/
+}
+
