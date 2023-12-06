@@ -1,0 +1,97 @@
+import React, {useState} from "react";
+import { useNavigate } from "react-router-dom";
+
+
+const SignIn = () =>{
+    const navigate = useNavigate(); //navigate function
+    const redirectToRegistration = () =>{
+        navigate('/Registration');
+    }
+
+    const [data, setData] = useState({
+        username: '',
+        password: '',
+   });
+
+   const [errors, setErrors] = useState({});
+
+   const handleChange = (e) =>{
+    const{name, value} = e.target;
+    setData((prevData) => ({
+        ...prevData,
+        [name]:value 
+
+    }));
+    //clear errors for the field when the user starts typing
+    if(errors[name]){
+        setErrors((prevErrors)=>({
+            ...prevErrors,
+            [name]: ''
+
+        }));
+
+    }
+
+   };
+
+   const handleSubmit = (event) => {
+    event.preventDefault();
+    //Array list to store the error messages 
+    let errorMessages = [];
+    //Check for empty fields, if there is one, add it to the errorMessages list
+    Object.keys(data).forEach((key)=>{
+        if(!data[key].trim()){
+            const field = key.charAt(0).toUpperCase()+ key.slice(1).replace(/([A-Z])/g, ' $1').trim();
+            errorMessages.push(`${field} is required!`);
+        }
+    });
+
+    //Do not submit the form since there is an error message
+    if(errorMessages.length > 0 ){
+        alert(`Please complete the following fields: \n${errorMessages.join('\n')}`);
+    }
+    else{console.log(data);}
+
+   };
+
+
+    return (
+        <div className="signIn" >
+            <div className="circle1"></div>
+            <div className="circle2"></div>
+            <div className="circle3"></div>
+            <div className="circle4"></div>
+            <div className="circle5"></div>
+            
+            <form className="login-form" onSubmit={handleSubmit}>
+                <h3>Please enter your username and password</h3>
+                <div className="row">
+                    <input size='25' type ='text' name='username' placeholder="Username" onChange={handleChange}/>
+                </div>
+
+                <div className="row">
+                    <input size='25' type ='password' name='password' placeholder="Password" onChange={handleChange}/>
+                </div>
+
+                <div className="buttons">
+                    <button className="signin">Sign In</button>
+                    {/*In case someone is not sure that they don't have the account*/}
+                    <button className="signup" onClick={redirectToRegistration}>Sign Up</button>
+                </div>
+           
+            </form>
+            
+            
+
+
+            
+
+
+        </div>
+    );
+   
+
+
+};
+
+export default SignIn;

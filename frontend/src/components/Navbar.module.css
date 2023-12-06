@@ -1,0 +1,151 @@
+
+* {
+  overflow: hidden;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  background-color: #1B2432;
+  
+}
+
+ul {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+
+a {
+  text-decoration: none;
+  color: white;
+  font-size: 18px;
+}
+.navLink {
+  
+  padding: 10px 20px; 
+  background-image: linear-gradient(180deg, #ffa48d, #ff4e98); 
+  color: white; 
+  font-weight: bold; 
+  border: none; 
+  border-radius: 25px; 
+  text-align: center; 
+  text-decoration: none; 
+  display:inline-block; 
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+  transition: all 0.3s ease; 
+  cursor: pointer;
+  
+  
+}
+
+.navLink:hover {
+  
+  box-shadow: 0 5px 15px #FEFAE0; /*Larger shadow on hover */
+  transform: scale(1.05); /* Slightly increase size on hover */
+}
+
+/* navbar */
+.navbar {
+  overflow: hidden;
+  background-color:#1B2432;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 40px;
+  min-height: 70px;
+  
+}
+
+
+  /* logo  */
+.logo {
+  font-size: 30px;
+  font-family: 'Snell Roundhand', 'cursive';
+  color: white;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Example shadow, adjust as needed */
+  letter-spacing: 1px;
+  font-style: oblique;
+  font-weight: 600;
+  
+  font-stretch: ultra-expanded	
+
+}
+
+
+  /* ul  */
+.navMenu {
+  margin-left: auto; /* This will push the navMenu to the right */
+  display: flex;
+  gap: 60px;
+}
+
+  /* media queries */
+
+@media screen and (max-width: 780px){
+
+  /* hamburger */
+  .hamburger {
+    display: block;
+    cursor: pointer;
+      
+  }
+
+  .bar {
+    background-image: linear-gradient(90deg, #fff7ad, #ffa9f9);
+    width: 20px;
+    height: 3px;
+    display: block;
+    margin: 5px;
+    -webkit-transition: 0.3s ease-in-out;
+    transition: 0.3s ease-in-out;
+  }
+
+  /* adding active class to the bars  */
+  .hamburger.active .bar:nth-child(2){
+    opacity: 0;
+  }
+  .hamburger.active .bar:nth-child(1){
+    transform: translateY(8px) rotate(45deg);
+  }
+  .hamburger.active .bar:nth-child(3){
+    transform: translateY(-8px) rotate(-45deg);
+  }
+
+
+  /* navMenu */
+
+  .navMenu{
+    position: absolute;
+    flex-direction: column;
+    gap: 0;
+    top: 70px;
+    left: -100%;
+    text-align: start;
+    width: 100%;
+    transition: 0.7s ease-in-out;
+    background-color:#1B2432;
+    padding: 10px;
+  }
+
+  .navMenu.active{
+    left: 0;
+      
+  }
+
+  .navMenu li {
+    margin: 16px 0;
+      
+  }
+  .navLink{
+    background: none;
+    border: none;
+    padding:10px 50px; 
+    margin:0;
+    box-shadow:none;
+    border-radius: 10px;
+  }
+
+}
+
+
+
