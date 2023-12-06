@@ -20,7 +20,7 @@ const userSchema = new Schema({
     required: true
   },
   username: {
-    type: string,
+    type: String,
     required: true
   },
   password: {
@@ -28,5 +28,10 @@ const userSchema = new Schema({
     required: true
   }
 });
+
+userSchema.methods.matchPassword = async function (enteredPassword) {
+  return enteredPassword == this.password;
+};
+
 
 module.exports = mongoose.model('user', userSchema)
