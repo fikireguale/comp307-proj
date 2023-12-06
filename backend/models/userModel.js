@@ -20,7 +20,7 @@ const userSchema = new Schema({
     required: true
   },
   username: {
-    type: string,
+    type: String,
     required: true
   },
   password: {
