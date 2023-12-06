@@ -29,4 +29,9 @@ const userSchema = new Schema({
   }
 });
 
+userSchema.methods.matchPassword = async function (enteredPassword) {
+  return enteredPassword == this.password;
+};
+
+
 module.exports = mongoose.model('user', userSchema)
