@@ -40,7 +40,7 @@
   font-weight:200;
   border-color:white;
   border-width: 0.01cap;
-  font-family: 'Gill Sans', 'Gill Sans MT', 'Calibri', 'Trebuchet MS', sans-serif;
+  font-family: 'Snell Roundhand', 'cursive';
 }
 .landing .buttons button:hover{
   box-shadow: 0 5px 10px #7C93C3;
@@ -63,7 +63,7 @@
   
 }
 .registration h1{
-  font-family:'Brush Script MT', 'Brush Script Std', 'cursive';
+  font-family: 'Snell Roundhand', 'cursive';
   color:#F0ECE5;
   margin-bottom: 30px;
   text-align: center;
@@ -120,13 +120,14 @@
   box-shadow: 0 2px 7px #80185F;
   margin-bottom: 30px; /* Spacing between input fields */
   display: flex;
-  
+  color: white;
 }
 
 .registration input:hover {
   background-color:transparent;
   box-shadow: 0 5px 10px #7C93C3;
   transform: scale(1.05); /* Slightly increase size on hover */
+  color: white;
 }
 
 
@@ -175,7 +176,7 @@
 .signIn .login-form input::placeholder{
   color:#FFF2D8
 }
-.signIn .buttons .signin, .signIn .buttons .signup {
+.signIn .buttons .signin, .signIn .buttons .signup , .signIn .login-form input{
   z-index: 10; 
   position: relative; 
 }

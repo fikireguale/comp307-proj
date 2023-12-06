@@ -5,6 +5,7 @@
   margin: 0;
   box-sizing: border-box;
   background-color: #1B2432;
+  
 }
 
 ul {
@@ -33,6 +34,7 @@ a {
   transition: all 0.3s ease; 
   cursor: pointer;
   
+  
 }
 
 .navLink:hover {
@@ -58,7 +60,7 @@ a {
   /* logo  */
 .logo {
   font-size: 30px;
-  font-family: Georgia, serif;
+  font-family: 'Snell Roundhand', 'cursive';
   color: white;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Example shadow, adjust as needed */
   letter-spacing: 1px;
