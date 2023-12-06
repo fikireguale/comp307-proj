@@ -9,9 +9,9 @@ const userModel = require('./models/userModel')
 
 //express app
 const app = express()
-app.use(express.static(path.join(frontend, '/build')));
+app.use(express.static(path.join(__dirname, '../frontend/build')));
 app.get('*', (req, res) => {
-	res.sendFile(path.join(frontend, '/build', 'index.html'));
+	res.sendFile(path.join(__dirname, '../frontend/build', 'index.html'));
   });
 //middleware
 app.use(express.json())
