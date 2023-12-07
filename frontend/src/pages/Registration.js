@@ -65,7 +65,7 @@ const Registration = () =>{
 
             const response = await axios.post("/api/user/register", data, config);
             console.log("Success");
-            navigate('/landing'); //redirect after success
+            navigate('/'); //redirect after success
         } catch (e) {
                 console.log("Error", e.stack);
                 console.log("Error", e.name);
