@@ -1,13 +1,13 @@
 import React, {useState} from "react";
-import axios from "axios";
+import axios from 'axios';
 import { useNavigate } from "react-router-dom";
 
 
 const Registration = () =>{
    const navigate = useNavigate();
-   const redirectToLanding = () =>{
-    navigate('/');
-}
+   //const redirectToLanding = () =>{
+    //navigate('/');
+//}
    const [data, setData] = useState({
         firstName: '',
         lastName: '',
@@ -66,7 +66,7 @@ const Registration = () =>{
                 };
             
 
-            const response = await axios.post("/api/user/register", data, config);
+            const response = await axios.post("/user/register", data, config);
             console.log("Success");
             navigate('/'); //redirect after success
         } catch (e) {
@@ -97,7 +97,7 @@ const Registration = () =>{
                     <input size='25' type ='password' name='password' placeholder="Password" onChange={handleChange}/>
                 </div>
                 <div className="submitButton">
-                    <button type='submit' onClick={redirectToLanding}>Submit</button>
+                    <button type='submit'>Submit</button>
                 </div>
                 
 
