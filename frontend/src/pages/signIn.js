@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import { useNavigate } from "react-router-dom";
-
+import axios from "axios";
 
 const SignIn = () =>{
     const navigate = useNavigate(); //navigate function
@@ -50,7 +50,24 @@ const SignIn = () =>{
     if(errorMessages.length > 0 ){
         alert(`Please complete the following fields: \n${errorMessages.join('\n')}`);
     }
-    else{console.log(data);}
+    //else{console.log(data);}
+    else{
+
+        try {
+            const config = {
+                headers: {
+                  "Content-type": "application/json",
+                },
+              };
+        
+
+        const response = await axios.post("/api/user/signin", data, config);
+    console.log("Success")
+    } catch (e) {
+        console.log("Error", e.stack);
+        console.log("Error", e.name);
+        console.log("Error", e.message);
+    }
 
    };
 
