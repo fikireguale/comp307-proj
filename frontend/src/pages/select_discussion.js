@@ -48,10 +48,20 @@ const Select_Discussion =() =>{
                         <p>course description</p>
                     </div>
                 </div>
+
+                <div class="item">
+                    <img src="../assets/course_img.jpeg"></img>
+                    <div class="course_text">
+                        <h2>Course name5</h2>
+                        <p>course description</p>
+                    </div>
+                </div>
+
             </div>
 
 
         </div>
     )
 };
+
 export default Select_Discussion;

@@ -16,7 +16,7 @@ function App() {
         <Route path='/signIn' element={<SignIn/>}/>
         <Route path='/discussion' element={<Discussion/>}/>
         <Route path='/select_discussion' element={<Select_Discussion/>}/>
-
+          
       </Routes>
     </Router>
   );
