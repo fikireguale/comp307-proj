@@ -8,8 +8,8 @@ const Landing = () =>{
     const headline1 = "Beyond words, Above Expectations -"
     const headline2 = "Your Nest for Exceptional Communication!"
 
-    const toPerch = () => {
-        navigate('/')
+    const toselectDiscussion = () => {
+        navigate('/select_discussion')
     }
     
     return (
@@ -35,7 +35,7 @@ const Landing = () =>{
 
                     <div className="buttons">
                         <button>Download to your Desktop</button>
-                        <button onClick={toPerch}>Open Perch in your browser</button>
+                        <button onClick={toselectDiscussion}>Open Perch in your browser</button>
 
 
                     </div>
