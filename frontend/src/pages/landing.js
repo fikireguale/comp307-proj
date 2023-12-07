@@ -9,7 +9,7 @@ const Landing = () =>{
     const headline2 = "Your Nest for Exceptional Communication!"
 
     const toselectDiscussion = () => {
-        navigate('/select_discussion')
+        navigate('/discussion')
     }
     
     return (
