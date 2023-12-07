@@ -61,7 +61,7 @@ const SignIn = () =>{
               };
         
 
-        const response = await axios.post("/api/user/signin", data, config);
+        const response = await axios.post("/api/user/register", data, config);
     console.log("Success")
     } catch (e) {
         console.log("Error", e.stack);
