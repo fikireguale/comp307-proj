@@ -4,6 +4,7 @@ import axios from "axios";
 
 const SignIn = () =>{
     const navigate = useNavigate(); //navigate function
+
     const redirectToRegistration = () =>{
         navigate('/Registration');
     }
@@ -63,7 +64,7 @@ const SignIn = () =>{
 
         const response = await axios.post("/api/user/register", data, config);
     console.log("Success"); 
-    navigate('/select_discussion'); //redirect after success
+    navigate('/select_discussion'); //redirect to select discussion page 
     } catch (e) {
         console.log("Error", e.stack);
         console.log("Error", e.name);

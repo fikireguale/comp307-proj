@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 
 
 const Registration = () =>{
+   const navigate = useNavigate();
    const [data, setData] = useState({
         firstName: '',
         lastName: '',
@@ -14,7 +15,7 @@ const Registration = () =>{
    });
 
    const [errors, setErrors] = useState({});
-   const navigate = useNavigate();
+   
 
    const handleChange = (e) =>{
     const{name, value} = e.target;
@@ -64,7 +65,7 @@ const Registration = () =>{
 
             const response = await axios.post("/api/user/register", data, config);
             console.log("Success");
-            navigate('/'); //redirect after success
+            navigate('/landing'); //redirect after success
         } catch (e) {
                 console.log("Error", e.stack);
                 console.log("Error", e.name);
