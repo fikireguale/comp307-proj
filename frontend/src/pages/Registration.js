@@ -5,9 +5,9 @@ import { useNavigate } from "react-router-dom";
 
 const Registration = () =>{
    const navigate = useNavigate();
-   const redirectToLanding = () =>{
-    navigate('/');
-}
+   //const redirectToLanding = () =>{
+    //navigate('/');
+//}
    const [data, setData] = useState({
         firstName: '',
         lastName: '',
@@ -97,7 +97,7 @@ const Registration = () =>{
                     <input size='25' type ='password' name='password' placeholder="Password" onChange={handleChange}/>
                 </div>
                 <div className="submitButton">
-                    <button type='submit' onClick={redirectToLanding}>Submit</button>
+                    <button type='submit'>Submit</button>
                 </div>
                 
 
