@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import axios from "axios";
+import axios from 'axios';
 import { useNavigate } from "react-router-dom";
 
 
@@ -66,7 +66,7 @@ const Registration = () =>{
                 };
             
 
-            const response = await axios.post("/api/user/register", data, config);
+            const response = await axios.post("/user/register", data, config);
             console.log("Success");
             navigate('/'); //redirect after success
         } catch (e) {

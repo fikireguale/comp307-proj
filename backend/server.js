@@ -17,18 +17,25 @@ app.use((req, res, next) => {
 })
 
 app.use(express.static(path.join(__dirname, '../frontend/build')));
+app.use('/user/',userRoutes)
 app.get('*', (req, res, next) => {
 	res.sendFile(path.join(__dirname, '../frontend/build', 'index.html'));
-  });
+	next()  
+});
+
+app.get('/t', (req, res, next) => {
+		res.json({mssg: 'GET all workouts'})
+		next()	  
+})
 
 // routes
-app.use('/api/user/',userRoutes)
+//app.use('/api/user/',userRoutes)
 
 
 //connect to db
 mongoose.connect(process.env.MONGO_URI)
 	.then(() => {
-		app.listen(process.env.PORT, process.env.HOSTNAME, () => {
+		app.listen(process.env.PORT, process.env.HOSTNAME,() => {
 			console.log(`Connected to database, Server running at http://${process.env.HOSTNAME}:${process.env.PORT}/`);
 
 		});
