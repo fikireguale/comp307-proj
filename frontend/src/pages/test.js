@@ -3,7 +3,7 @@ import React from "react";
 import { useNavigate } from 'react-router-dom';
 
 
-const Landing = () =>{
+const Test = () =>{
     const navigate = useNavigate();
     const headline1 = "Beyond words, Above Expectations -"
     const headline2 = "Your Nest for Exceptional Communication!"
@@ -18,9 +18,9 @@ const Landing = () =>{
     return (
         <div >
             {/*<Navbar/>*/}
-            <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
             
-            <div className="landing">
+            {/*remember to change this back to landing*/}
+            <div className="test">
                 <div className="row">
                     <h2>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         {headline1.split('').map((letter, index)=> 
@@ -62,4 +62,4 @@ const Landing = () =>{
 
 };
 
-export default Landing;
+export default Test;
