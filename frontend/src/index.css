@@ -1,4 +1,5 @@
 .landing {
+  overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -16,9 +17,9 @@
   color: #FDF7E4;
   font-family: 'Snell Roundhand', 'cursive';
   padding: 70px; 
-  
 
 }
+
 /* when the cursor is on the letter, it bounces*/
 .bounce{
   display: inline-block;
@@ -39,7 +40,7 @@
   font-weight:200;
   border-color:white;
   border-width: 0.01cap;
-  font-family: 'Gill Sans', 'Gill Sans MT', 'Calibri', 'Trebuchet MS', sans-serif;
+  font-family: 'Snell Roundhand', 'cursive';
 }
 .landing .buttons button:hover{
   box-shadow: 0 5px 10px #7C93C3;
@@ -50,6 +51,7 @@
 
 
 .registration {
+  background-color:transparent;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -61,16 +63,18 @@
   
 }
 .registration h1{
-  font-family:'Brush Script MT', 'Brush Script Std', 'cursive';
+  font-family: 'Snell Roundhand', 'cursive';
   color:#F0ECE5;
   margin-bottom: 30px;
   text-align: center;
   font-style: italic;
   font-size: 50px;
+  background-color:transparent;
  
 }
 
 .registration .row{
+  background-color:transparent;
   display: flex;
   justify-content: space-between;
   margin-bottom: 15px;
@@ -108,6 +112,7 @@
 }
 
 .registration input {
+  background-color:transparent;
   width: calc(50% - 10px); 
   padding: 9px;
   border-radius: 25px;
@@ -115,16 +120,19 @@
   box-shadow: 0 2px 7px #80185F;
   margin-bottom: 30px; /* Spacing between input fields */
   display: flex;
-  
+  color: white;
 }
 
 .registration input:hover {
+  background-color:transparent;
   box-shadow: 0 5px 10px #7C93C3;
   transform: scale(1.05); /* Slightly increase size on hover */
+  color: white;
 }
 
 
 .signIn {
+  overflow: visible;
   display: flex;
   justify-content: center;
   height: 100vh;
@@ -136,7 +144,6 @@
   background-position: 90% 1%, -4% -6%, 25% 110%, -2% 100%, 100% 100%, 75% 115%;
   background-attachment: fixed, fixed, fixed, fixed, fixed, fixed;
   background-size: auto, 200px 200px,150px 150px, 340px 340px, 300px 300px;
-  
 
 }
 
@@ -169,7 +176,10 @@
 .signIn .login-form input::placeholder{
   color:#FFF2D8
 }
-
+.signIn .buttons .signin, .signIn .buttons .signup , .signIn .login-form input{
+  z-index: 10; 
+  position: relative; 
+}
 .signIn .buttons{
   display: flex;
   flex-direction: column;
@@ -233,6 +243,7 @@
 
 
 .signIn .circle1{
+  z-index: 1;
   width: 450px;
   height:450px;
   border-radius: 50%; /*make it round*/
@@ -244,6 +255,7 @@
   transform: translate(-50%, -50%);
 }
 .signIn .circle2{
+  z-index: 1;
   width: 450px;
   height:450px;
   border-radius: 50%; /*make it round*/
@@ -255,6 +267,7 @@
   transform: translate(-50%, -50%);
 }
 .signIn .circle3{
+  z-index: 1;
   width: 450px;
   height:450px;
   border-radius: 50%; /*make it round*/
@@ -267,6 +280,7 @@
 }
 
 .signIn .circle4{
+  z-index: 1;
   width: 450px;
   height:450px;
   border-radius: 50%; /*make it round*/
@@ -279,6 +293,7 @@
 }
 
 .signIn .circle5{
+  z-index: 1;
   width: 450px;
   height:450px;
   border-radius: 50%; /*make it round*/
@@ -289,208 +304,3 @@
   left:49%;
   transform: translate(-50%, -50%);/*shift the element up and left by half half*/
 }
-
-
-.discussion{
-  background-color: #1B2432;
-  color:white;
-  height: 100vh;
-  font-family:Arial, Helvetica, sans-serif
-}
-@media (min-width:600px){
-  .discussion .flexbox{
-    display: -webkit-flex;
-    display: flex;
-    height: 100vh;
-  }
-  .discussion .left_column{
-    -webkit-flex:0.5;
-    flex:0.5;
-    background-image: linear-gradient(#2a3446, rgb(101, 76, 112));
-    position: relative;
-  }
-  .discussion .channel_selection{
-    -webkit-flex:2;
-    flex:2;
-    border-top: 3px solid;
-    border-left: 3px solid;
-    border-right: 3px solid;
-    border-image: linear-gradient(to right, rgb(94, 92, 252), rgb(255, 111, 255)) 1;
-  }
-  .discussion .discussion_board{
-    -webkit-flex:6;
-    flex:6;
-  }
-}
-
-/* Left Column */
-.discussion .home_icon{
-  width: 80%;
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right:0;
-  margin: auto;
-}
-
-/* Channel Selection */
-.discussion .course_name{
-  height: 80px;
-  margin-left: 15px;
-  display: flex;
-  align-items: center;
-}
-
-.discussion .search input[type=text]{
-  width: 100%;
-  height: 40px;
-  background-color: rgb(15, 15, 17);
-  border: None;
-  padding-left: 20px;
-}
-
-/* Discussion Board */
-.discussion .channel_name{
-  height: 50px;
-  display: flex;
-  align-items: center;
-  position: relative fixed;
-  border-bottom: solid rgba(148, 148, 150, 0.1);
-}
-.discussion .channel_name h1{
-  margin-left: 15px;
-}
-
-.discussion .channel_name img{
-  position: absolute;
-  right: 0;
-  margin-right: 30px;
-}
-
-
-  .discussion #messages{
-    overflow: auto;
-    height: 80%;
-   
-  }
-  .message{
-    margin:0px;
-    padding: 0 14px;
-    font-size: 16px;
-    word-wrap: break-word;
-    white-space: normal;
-  }
-  
-  /* left message */
-  .message_left{
-    float: left;
-    line-height: 2.5em;
-  }
-  
-  /* right message */
-  .message_right{
-    float:right;
-    line-height: 2.5em;
-  }
-  
-  .clear{
-    clear: both;
-  }
-
-/* Send Message */
-.discussion #send{
-  border: solid rgba(148, 148, 150, 0.1);
-  width:80%;
-  margin: auto;
-}
-  .discussion #textarea{
-    width:100%;
-    background-color: transparent;
-    border: none;
-    line-height: 16px;
-    height: 60px;
-    text-align: left;
-    color: white;
-    padding: 5px;
-  }
-
-  .discussion .formatting-bar{
-    margin-bottom: 0px;
-    height: 30px;
-    background-image: linear-gradient(#2a3446, rgb(101, 76, 112));
-    position:relative;
-  }
-
-    .discussion .formatting-bar .btn{
-      font-weight: bold;
-      margin-right: 5px;
-      background-color: transparent;
-      border:none;
-      padding-left:10px;
-      margin-top: 10px;
-      
-    }
-    .discussion.formatting-bar .btn:hover{
-      cursor: pointer;
-    }
-
-
-
-
-
-.discussion #send_btn{
-  position: absolute;
-  right: 20px;
-  margin: auto;
-  bottom:0;
-  top:0;
-  background-color:transparent;
-  border: none;
-  
-}
-.discussion #send_btn:hover{
-  cursor: pointer;
-}
-
-
-
-.select_discussion{
-  background-color: #1B2432;
-  color:white;
-  height: 100vh;
-  font-family:Arial, Helvetica, sans-serif;
-  padding-left: 3%;
-  padding-right: 3%;
-}
-
-.select_discussion header{
-  text-align: right;
-}
-.select_discussion .logout{
-  background-color: transparent;
-  border: none;
-  color: grey;
-  padding: 20px;
-  margin-top: 10px;
-}
-
-.select_discussion .upper_bar{
-  display: flex;
-  align-items: center;
-}
-
-
-
-.select_discussion .select_board{
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 100px, 100px;
-  grid-gap: 25px;
-}
-
-.select_discussion .item{
-  background-color: #2b2b41;
-  padding: 15px;
-  margin: 5px;
-}
-

@@ -34,7 +34,7 @@ const SignIn = () =>{
 
    };
 
-   const handleSubmit = (event) => {
+   const handleSubmit = async(event) => {
     event.preventDefault();
     //Array list to store the error messages 
     let errorMessages = [];
@@ -62,12 +62,14 @@ const SignIn = () =>{
         
 
         const response = await axios.post("/api/user/register", data, config);
-    console.log("Success")
+    console.log("Success"); 
+    navigate('/select_discussion'); //redirect after success
     } catch (e) {
         console.log("Error", e.stack);
         console.log("Error", e.name);
         console.log("Error", e.message);
     }
+    };
 
    };
 

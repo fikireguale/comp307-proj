@@ -1,5 +1,6 @@
 import React, {useState} from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 
 const Registration = () =>{
@@ -13,6 +14,7 @@ const Registration = () =>{
    });
 
    const [errors, setErrors] = useState({});
+   const navigate = useNavigate();
 
    const handleChange = (e) =>{
     const{name, value} = e.target;
@@ -32,6 +34,7 @@ const Registration = () =>{
     }
 
    };
+
 
    const handleSubmit = async (event) => {
     event.preventDefault();
@@ -56,15 +59,16 @@ const Registration = () =>{
                     headers: {
                       "Content-type": "application/json",
                     },
-                  };
+                };
             
 
             const response = await axios.post("/api/user/register", data, config);
-        console.log("Success")
+            console.log("Success");
+            navigate('/'); //redirect after success
         } catch (e) {
-            console.log("Error", e.stack);
-            console.log("Error", e.name);
-            console.log("Error", e.message);
+                console.log("Error", e.stack);
+                console.log("Error", e.name);
+                console.log("Error", e.message);
         }
     };
 
