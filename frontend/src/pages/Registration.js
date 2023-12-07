@@ -1,4 +1,5 @@
 import React, {useState} from "react";
+import axios from "axios";
 
 
 const Registration = () =>{
@@ -32,7 +33,7 @@ const Registration = () =>{
 
    };
 
-   const handleSubmit = (event) => {
+   const handleSubmit = async (event) => {
     event.preventDefault();
     //Array list to store the error messages 
     let errorMessages = [];
@@ -44,11 +45,28 @@ const Registration = () =>{
         }
     });
 
-    //Do not submit the form since there is an error message
-    if(errorMessages.length > 0 ){
-        alert(`Please complete the following fields: \n${errorMessages.join('\n')}`);
-    }
-    else{console.log(data);}
+        //Do not submit the form since there is an error message
+        if(errorMessages.length > 0 ){
+            alert(`Please complete the following fields: \n${errorMessages.join('\n')}`);
+        }
+        else{
+
+            try {
+                const config = {
+                    headers: {
+                      "Content-type": "application/json",
+                    },
+                  };
+            
+
+            const response = await axios.post("/api/user/register", data, config);
+        console.log("Success")
+        } catch (e) {
+            console.log("Error", e.stack);
+            console.log("Error", e.name);
+            console.log("Error", e.message);
+        }
+    };
 
    };
 

@@ -2,7 +2,7 @@ require('dotenv').config()
 
 const http = require('http');
 const express = require('express')
-const workoutRoutes = require('./routes/workout')
+const userRoutes = require('./routes/userRoutes')
 const mongoose = require('mongoose')
 const path = require('path');
 const userModel = require('./models/userModel')
@@ -10,20 +10,23 @@ const userModel = require('./models/userModel')
 //express app
 const app = express()
 app.use(express.static(path.join(__dirname, '../frontend/build')));
-app.get('*', (req, res) => {
+app.get('*', (req, res, next) => {
 	res.sendFile(path.join(__dirname, '../frontend/build', 'index.html'));
+	next()
   });
-//middleware
-app.use(express.json())
 
+//middleware
+
+app.use(express.json())
 app.use((req, res, next) => {
   console.log(req.path, req.method)
   next()
 })
 
 // routes
-app.use('/api/workout', workoutRoutes)
+app.use('/api/user/',userRoutes)
 
+/*
 app.post('/register', async (req, res) =>{
 	try {
 		// Extract data from the request body
@@ -43,7 +46,7 @@ app.post('/register', async (req, res) =>{
 		res.status(500).json({ error: 'Internal Server Error' });
 	  }
 
-})
+})*/
 
 //connect to db
 mongoose.connect(process.env.MONGO_URI)
