@@ -24,6 +24,7 @@ const Select_Discussion =() =>{
                     <img src="../assets/course_img.jpeg"></img>
                     <div class="course_text">
                         <h2>Course name1</h2>
+                        <a href="./discussion"></a>
                         <p>course description</p>
                     </div>
                 </div>
@@ -48,7 +49,6 @@ const Select_Discussion =() =>{
                         <p>course description</p>
                     </div>
                 </div>
-
                 <div class="item">
                     <img src="../assets/course_img.jpeg"></img>
                     <div class="course_text">
@@ -56,12 +56,10 @@ const Select_Discussion =() =>{
                         <p>course description</p>
                     </div>
                 </div>
-
             </div>
 
 
         </div>
     )
 };
-
 export default Select_Discussion;
