@@ -40,7 +40,8 @@ router.post('/register', async (req, res) =>{
     try{
       // Extract data from the request body
       const { username, password } = req.body;
-      const userInfo = await user.findOne({ username: username });
+      const regex = new RegExp(username, 'i');
+      const userInfo = await user.findOne({ username: { $regex: regex } });
 
         if (userInfo) {
           console.log('user found', userInfo);
@@ -49,14 +50,17 @@ router.post('/register', async (req, res) =>{
           if(passwordMatch){
             res.status(201).json(userInfo);
             console.log('password match', userInfo);
+            return;
           } else {
             // Passwords do not match
             console.error('Wrong user info');
             res.status(401).json({ error: 'Wrong user info' });
+            return;
           }
         }else{
           console.error('Wrong user info');
           res.status(401).json({ error: 'Wrong user info' });
+          return;
         }
       } catch {
           console.error('Wrong user info');
@@ -69,49 +73,115 @@ router.post('/register', async (req, res) =>{
       router.post('/add_user_chat/', async (req, res) => {
         try {
           
-          const { username, chat } = req.body;
+          const { username, chatName } = req.body;
       
           // Find the user by username
-          const userInfo = await user.findOne({ username });
+          const regex = new RegExp(username, 'i');
+          const userInfo = await user.findOne({ username: { $regex: regex } });
+          const chatInfo = await chat.findOne({ chatName });
+
+          if (userInfo){
+
+            console.log('user found');
+              
+            if (chatInfo){
+                
+              console.log('chat found');  
+              for (const userChat of userInfo.userChats) {
+                console.log('check existence');
+                if (userChat._id.equals(chatInfo._id)) {
+                  console.error('UserAlreadyinChat');
+                  res.status(401).json({ error: 'User already in chat' });
+                  return;
+                }
+              }
       
-          // Add the chat to the user's userChats array
-          userInfo.userChats.push(chat._id);
-      
-          // Save the updated user document
-          const savedUser = await userInfo.save();
-      
-          res.status(200).json(savedUser);
+              console.log('DNE, add');
+              // Add the chat to the user's userChats array
+              userInfo.userChats.push(chatInfo._id);
+              // Save the updated user document
+              const savedUser = await userInfo.save();
+              res.status(200).json(savedUser);
+                
+            
+            }else{
+              console.error('Chat DNE');
+              res.status(401).json({ error: 'No chat' });
+              return;
+            }
+
+          }else{
+            console.error('User DNE');
+            res.status(500).json({ error: 'No user' });
+            return;
+          }  
+
         } catch (error) {
           console.error(error);
           res.status(500).json({ error: 'Internal Server Error' });
         }
       });
 
-      router.delete('/delete_user_chat/', async (req, res) => {
+
+      router.get('/get_user_chat/', async (req, res) => {
+        try {
+          const { username } = req.body;
+          const regex = new RegExp(username, 'i');
+          const userInfo = await user.findOne({ username: { $regex: regex } }); 
+
+          if (userInfo) {
+            const chats = userInfo.userChats;
+            res.status(200).json({ chats });
+          } else {
+            res.status(404).json({ error: 'User not found' });
+          }
+        } catch (error) {
+          console.error(error);
+          res.status(500).json({ error: 'Internal Server Error' });
+        }
+      });
+
+
+      router.post('/delete_user_chat/', async (req, res) => {
         try {
           
-          const { username, chat } = req.body;
+          const { username, chatName } = req.body;
       
           // Find the user by username
-          const userInfo = await user.findOne({ username });
-      
-          // Add the chat to the user's userChats array
-          userInfo.userChats.push(chat._id);
+          const regex = new RegExp(username, 'i');
+          const userInfo = await user.findOne({ username: { $regex: regex } });
+          const chatInfo = await chat.findOne({ chatName });
 
-          userInfo.updateOne({ $pull: { userChats: chatId } }, (updateErr, result) => {
-            if (updateErr) {
-              console.error(updateErr);
-              res.status(500).json({ error: 'Internal Server Error' });
+          if (userInfo){
+
+            console.log('user found');
+              
+            if (chatInfo){
+                
+              console.log('chat found');  
+                  
+              try {
+                await userInfo.updateOne({ $pull: { userChats: chatInfo._id } });
+                const savedUser = await userInfo.save();
+                console.log("deleted")
+                res.status(201).json(savedUser);
+              } catch (updateErr) {
+                console.error('User Not In Chat');
+                res.status(401).json({ error: 'User not in chat' });
+              }
             } else {
-              res.status(200).json({ message: 'Chat removed from userChats' });
+              console.error('Chat DNE');
+              res.status(401).json({ error: 'No chat' });
             }
-          });
+          } else {
+            console.error('User DNE');
+            res.status(500).json({ error: 'No user' });
+          }
         } catch (error) {
           console.error(error);
           res.status(500).json({ error: 'Internal Server Error' });
         }
       });
-      
 
 //module.exports = { allUsers, registerUser, authUser };
 
