@@ -4,7 +4,7 @@ import Landing from './pages/landing';
 import Registration from './pages/Registration';
 import SignIn from './pages/signIn';
 import Select_Discussion from './pages/select_discussion';
-import Test from './pages/test'
+
 import React, { useEffect } from 'react';
 
 function App() {

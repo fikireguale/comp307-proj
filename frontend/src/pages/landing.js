@@ -1,5 +1,5 @@
 import React from "react";
-//import Navbar from "../components/Navbar";
+import Navbar from "../components/Navbar";
 import { useNavigate } from 'react-router-dom';
 
 
@@ -17,10 +17,12 @@ const Landing = () =>{
     
     return (
         <div >
-            {/*<Navbar/>*/}
+            <Navbar/>
             <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
             
             <div className="landing">
+                <div class="birds"></div>
+                
                 <div className="row">
                     <h2>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         {headline1.split('').map((letter, index)=> 
@@ -37,12 +39,15 @@ const Landing = () =>{
                         ))}
                     </h2>
 
+                    {/*
+
                     <div className="buttons">
                         <button onClick={tosignUp}>Sign Up</button>
                         <button onClick={tosignIn}>Sign In</button>
 
 
                     </div>
+                    */}
 
                     
                     
