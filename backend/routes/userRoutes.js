@@ -40,7 +40,8 @@ router.post('/register', async (req, res) =>{
     try{
       // Extract data from the request body
       const { username, password } = req.body;
-      const userInfo = await user.findOne({ username: username });
+      const regex = new RegExp(username, 'i');
+      const userInfo = await user.findOne({ username: { $regex: regex } });
 
         if (userInfo) {
           console.log('user found', userInfo);
@@ -75,7 +76,8 @@ router.post('/register', async (req, res) =>{
           const { username, chatName } = req.body;
       
           // Find the user by username
-          const userInfo = await user.findOne({ username });
+          const regex = new RegExp(username, 'i');
+          const userInfo = await user.findOne({ username: { $regex: regex } });
           const chatInfo = await chat.findOne({ chatName });
 
           if (userInfo){
@@ -124,7 +126,8 @@ router.post('/register', async (req, res) =>{
       router.get('/get_user_chat/', async (req, res) => {
         try {
           const { username } = req.body;
-          const userInfo = await user.findOne({ username }); 
+          const regex = new RegExp(username, 'i');
+          const userInfo = await user.findOne({ username: { $regex: regex } }); 
 
           if (userInfo) {
             const chats = userInfo.userChats;
@@ -145,7 +148,8 @@ router.post('/register', async (req, res) =>{
           const { username, chatName } = req.body;
       
           // Find the user by username
-          const userInfo = await user.findOne({ username });
+          const regex = new RegExp(username, 'i');
+          const userInfo = await user.findOne({ username: { $regex: regex } });
           const chatInfo = await chat.findOne({ chatName });
 
           if (userInfo){
