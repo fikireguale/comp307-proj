@@ -29,10 +29,11 @@ const userSchema = new Schema({
     type: String,
     required: true
   },
-  userChats: {
-    type: [{ type:mongoose.Schema.Types.ObjectId, ref: 'chatModel' }],
-  default: []}
-});
+  userChats: [{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'chat',
+  default: []}]}
+);
 
 
 module.exports = mongoose.model('user', userSchema)
