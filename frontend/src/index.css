@@ -97,7 +97,7 @@
 }
 
 .registration .row{
-  background-color:transparent;
+  background-color:transparent !important;
   display: flex;
   justify-content: space-between;
   margin-bottom: 15px;
