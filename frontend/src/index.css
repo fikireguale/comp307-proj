@@ -18,16 +18,7 @@
   width: 100%; /* Takes full width of the container */
   height: 100%; /* Takes full height of the container */
 }
-.tree{
-  position: absolute;
-  bottom: 0px;
-  left: 0px;
-  background: url('./assets/tree.png') no-repeat bottom left ;
-  background-size: 300px 300px;
-  z-index: 1; /* Above the main content but below the text */
-  width: 100%; /* Takes full width of the container */
-  height: auto; /* Takes full height of the container */
-}
+
 .landing .row h2{
   position: relative; /* This will allow z-index to take effect */
   z-index: 2;
