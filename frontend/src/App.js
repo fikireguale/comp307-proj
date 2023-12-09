@@ -23,7 +23,7 @@ function App() {
         <Route path='/registration' element={<Registration/>}/>
         <Route path='/signIn' element={<SignIn/>}/>
         <Route path='/discussion' element={<Discussion/>}/>
-        <Route path='/select_discussion' element={<Select_Discussion/>}/>
+        <Route path='/select_discussion/:username' element={<Select_Discussion/>}/>
           
       </Routes>
     </Router>

@@ -13,7 +13,8 @@ const userSchema = new Schema({
   },
   email: {
     type: String,
-    required: true
+    required: true,
+    unique: true
   },
   phoneNumber: {
     type: Number,
@@ -21,17 +22,18 @@ const userSchema = new Schema({
   },
   username: {
     type: String,
-    required: true
+    required: true,
+    unique: true
   },
   password: {
     type: String,
     required: true
-  }
-});
-
-userSchema.methods.matchPassword = async function (enteredPassword) {
-  return enteredPassword == this.password;
-};
+  },
+  userChats: [{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'chat',
+  default: []}]}
+);
 
 
 module.exports = mongoose.model('user', userSchema)

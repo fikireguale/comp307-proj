@@ -60,11 +60,11 @@ const SignIn = () =>{
                   "Content-type": "application/json",
                 },
               };
-        
-
-        const response = await axios.post("/api/user/register", data, config);
-    console.log("Success"); 
-    navigate('/select_discussion'); //redirect to select discussion page 
+            const response = await axios.post("/user/sign_in", data, config);
+            console.log("Success"); 
+            //navigate('/select_discussion'); //redirect to select discussion page
+            const username = response.data.username;
+            navigate(`/select_discussion/${username}`);
     } catch (e) {
         console.log("Error", e.stack);
         console.log("Error", e.name);
