@@ -467,7 +467,7 @@
 }
 
 
-
+/* -------------------- Select Discussion -------------------------- */
 .select_discussion{
   background-color: #1B2432;
   color:white;
@@ -479,9 +479,10 @@
 
 .select_discussion header{
   text-align: right;
+  margin-bottom: 10px;
 }
 .select_discussion .logout{
-  font-size: 15px;
+  font-size: large;
   background-color: transparent;
   border: none;
   color: grey;
@@ -496,13 +497,32 @@
 .select_discussion .upper_bar{
   display: flex;
   align-items: center;
-  margin-bottom: 20px;
+  margin-bottom: 50px;;
 }
 
-.select_discussion .upper_bar a{
-  
+.select_discussion .semester{
+  margin: 0 0 0 auto;
+  border: solid white;
+  padding: 5px 20px;
 }
 
+.select_discussion a.btn--circle{
+  margin-left: 30px;
+  width: 25px;
+  height: 25px;
+  padding-top: 4px;
+  padding-left: 4.5px;
+  background-color: #7b53bd;
+  border-radius: 50%;
+  -webkit-box-shadow: 0 3px 5px rgba(0,0,0,3);
+  box-shadow: 0 3px 5px rgba(0,0,0,3);
+}
+
+.select_discussion a.btn--circle:hover{
+  color: #2b2b41;
+  cursor: pointer;
+
+}
 
 
 .select_discussion .select_board{
@@ -516,24 +536,23 @@
   background-color: #2b2b41;
   padding: 15px;
   margin: 5px;
-  display: flex;
-  position: relative;
 }
-.select_discussion .item a{
-  position: absolute;
-  top: 0;
-  left: 0;
-  height:100%;
-  width: 100%;
+.select_discussion .item img{
+  height: 100px;
+  float: left;
 }
-
-.select_discussion .item:hover{
+.select_discussion .fa-minus{
+  float: right;
+  color: white;
+  height: 20px;
+  width: 20px;
+  border: none;
+  background: transparent;
+}
+.select_discussion .fa-minus:hover{
   cursor: pointer;
 }
-.select_discussion img{
-  max-width: 100%;
-  width: 50px;
-  height:auto;
-  margin-right: 70px;
-
+.select_discussion .course_text{
+  padding-left: 30px;
+  background: transparent;
 }
