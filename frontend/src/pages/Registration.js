@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 import axios from 'axios';
 import { useNavigate } from "react-router-dom";
+import {Helmet} from "react-helmet";
 
 
 const Registration = () =>{
@@ -81,6 +82,10 @@ const Registration = () =>{
     return(
         
         <div className="registration">
+            <Helmet>
+                <title>Registration</title>
+                {/* You can also add common meta tags, links here */}
+            </Helmet>
             <h1>Welcome</h1>
             
             <form className="register-form" onSubmit={handleSubmit}>

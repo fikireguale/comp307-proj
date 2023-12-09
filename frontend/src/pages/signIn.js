@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import {Helmet} from "react-helmet";
 
 const SignIn = () =>{
     const navigate = useNavigate(); //navigate function
@@ -77,6 +78,9 @@ const SignIn = () =>{
 
     return (
         <div className="signIn" >
+            <Helmet>
+                <title>Sign In</title>
+            </Helmet>
             
             <form className="login-form" onSubmit={handleSubmit}>
                 <div className="circle1"></div>

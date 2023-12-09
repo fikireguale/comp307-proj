@@ -1,9 +1,11 @@
 import {BrowserRouter as Router, Route, Routes} from 'react-router-dom';
+import {Helmet} from "react-helmet";
 import Discussion from './pages/discussion';
 import Landing from './pages/landing';
 import Registration from './pages/Registration';
 import SignIn from './pages/signIn';
 import Select_Discussion from './pages/select_discussion';
+
 
 import React, { useEffect } from 'react';
 
@@ -16,8 +18,16 @@ function App() {
   }, []);
 
   return (
+    <>
+    <Helmet>
+      <title>Perch</title>
+      {/* You can also add common meta tags, links here */}
+    </Helmet>
+   
+    
     <Router>
       <Routes>
+        
         {/*remeber to changing this back to Landing */}
         <Route path='/' element={<Landing/>}/>
         <Route path='/registration' element={<Registration/>}/>
@@ -27,6 +37,7 @@ function App() {
           
       </Routes>
     </Router>
+    </>
   );
 }
 
