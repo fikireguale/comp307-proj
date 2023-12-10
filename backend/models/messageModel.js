@@ -4,16 +4,28 @@ const messageSchema = mongoose.Schema(
   {
     sender: { 
         type: mongoose.Schema.Types.ObjectId,
-        ref: "User" },
+        ref: "User",
+        required: true
+    },
 
-    content: { type: String
+    content: { 
+      type: String,
+      required: true
     },
 
     chat: { 
         type: mongoose.Schema.Types.ObjectId,
-        ref: "Chat" },
-  },
-  { timestamps: true }
+        ref: "Chat",
+        required: true
+    },
+
+    createdAt: {
+      type: Date,
+      default: Date.now
+    }
+
+  }
+
 );
 
 const Message = mongoose.model("Message", messageSchema);
