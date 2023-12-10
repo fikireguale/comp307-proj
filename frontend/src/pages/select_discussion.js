@@ -9,8 +9,6 @@ import Modal from 'react-modal';
 const Select_Discussion =() => {
 
     const navigate = useNavigate(); //navigate function
-
-
     const toLanding = () => {
         navigate('/')
     }
