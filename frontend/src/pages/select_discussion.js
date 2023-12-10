@@ -11,6 +11,10 @@ const Select_Discussion =() => {
         navigate('/');
     }
 
+    const toDiscussionBoard = (chatName) =>{
+      navigate(`/discussion/${encodeURIComponent(username)}/${chatName}`);
+    }
+
     const { username } = useParams();
   const [chats, setChats] = useState([]);
 
@@ -58,12 +62,11 @@ const Select_Discussion =() => {
       <div className="select_board">
         {console.log("BEFORE MAP", chats)}
         {chats.map((chat) => (
-          <div className="item">
+            <div className="item" key={chat.id} onClick={()=> toDiscussionBoard(chat.chatName)}>
             <img src="../assets/course_img.jpeg" alt="Course" />
             <div className="course_text">
                 {console.log("CHATNAME:", chat.chatName)}
               <h2>{chat.chatName}</h2>
-              <p>course description</p>
             </div>
           </div>
         ))}
