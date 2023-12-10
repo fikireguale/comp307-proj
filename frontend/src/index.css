@@ -499,9 +499,6 @@
   cursor: pointer;
 }
 
-.discussion .search ::not(:placeholder-shown){
-  color:#FFF2D8;
-}
 
 
 /* -------------------- Select Discussion -------------------------- */

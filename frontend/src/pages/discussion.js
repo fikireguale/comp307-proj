@@ -138,12 +138,12 @@ const Discussion =() =>{
 
             {/* Time line */}
             {/*
-            <div id="messages">
+              <div id="messages">
             */}
 
 
-              {/* Others' messages */}
-              {/*}
+            {/* Others' messages */}
+            {/*
               <div class="message message_left">
                 <div class="message_box">
                   <div class="message_content">
@@ -152,10 +152,10 @@ const Discussion =() =>{
                 </div>
               </div>
               <div class="clear"></div>
-              */}
+            */}
 
-              {/* My messages */}
-              {/*
+            {/* My messages */}
+            {/*
               <div class="message message_right">
                 <div class="message_box">
                   <div class="message_content">
@@ -165,7 +165,7 @@ const Discussion =() =>{
               </div>
               <div class="clear"></div>
             
-            </div>
+             </div>
             */}
 
             {/* Text box */}
