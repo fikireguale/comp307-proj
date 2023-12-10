@@ -127,7 +127,7 @@ const Select_Discussion =() => {
   return (
     <div className="select_discussion">
       <header>
-        <button className="logout" onClick={redirectToLanding}>
+        <button className="logout" onClick={toLanding}>
           Logout
         </button>
       </header>
