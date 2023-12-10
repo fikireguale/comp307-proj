@@ -1,4 +1,4 @@
-import React from "react";
+import React , {useState} from "react";
 
 const Discussion =() =>{
 
@@ -14,11 +14,32 @@ const Discussion =() =>{
     return now.toLocaleTimeString([], {hour: '2-digit', minute: '2-digit'});
   }
 
+  // State to hold messages
+  const [messages, setMessages] = useState([
+    { id: 1, user: "User 2", text: "hi is todays lecture in person?", time: getCurrentTime() },
+    { id: 2, user: "User 1", text: "No, it will be hosted on Zoom.", time: getCurrentTime() }
+  ]);
+
+  // State to hold the search term
+  const [searchTerm, setSearchTerm] = useState("");
+
+  
   // function to create and display messages
   function sendMessage(){
     const messageInput = document.getElementById("textarea");
     const message = messageInput.value;
     if (message.trim() == '') return;
+
+    const user = users[0];
+    const time = getCurrentTime();
+
+    // Update messages state instead of manipulating the DOM directly
+    setMessages([...messages, { id: messages.length + 1, user: user.name, text: message, time: time }]);
+
+    messageInput.value = "";
+  
+
+    /*
 
     const user = users[0];
     const time = getCurrentTime();
@@ -55,8 +76,23 @@ const Discussion =() =>{
 
     messageInput.value = "";
     discussionBoard.scrollTop = discussionBoard.scrollHeight;
+    */
+  }
+  //if not empty then change the color to white 
+  const inputTextStyle = searchTerm ? {color:'white'} : {};
+
+
+  function handleSearchChange(event) {
+    setSearchTerm(event.target.value);
   }
 
+   // Filter messages based on the search term
+   const filteredMessages = messages.filter((message) =>
+   message.text.toLowerCase().includes(searchTerm.toLowerCase())
+ );
+
+
+  
 
   return (
       <div className="discussion">
@@ -73,7 +109,7 @@ const Discussion =() =>{
               <h1>Comp 307</h1>
             </header>
             <div class="search">
-              <input type="text" id="searchInput" placeholder="Search..."></input>
+              <input type="text" id="searchInput" placeholder="Search..." value={searchTerm} onChange={handleSearchChange} style={inputTextStyle}/>
             </div>
 
           </section>
@@ -83,10 +119,31 @@ const Discussion =() =>{
               <img src="../assets/pin.png"></img>
             </header>
 
-            {/* Time line */}
-            <div id="messages">
 
-              {/* Others' messages */}
+            <div id="messages">
+              {/* Filter and map through messages for display */}
+              {filteredMessages.map((message) => (
+                <div key={message.id} className={`message message_${message.user === users[0].name ? "right" : "left"}`}>
+                  <div className="message_box">
+                    <div className="message_content">
+                      <div className="message_text">{message.text}</div>
+                      {/* Add timestamp and user icon if needed */}
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            
+
+            {/* Time line */}
+            {/*
+              <div id="messages">
+            */}
+
+
+            {/* Others' messages */}
+            {/*
               <div class="message message_left">
                 <div class="message_box">
                   <div class="message_content">
@@ -95,8 +152,10 @@ const Discussion =() =>{
                 </div>
               </div>
               <div class="clear"></div>
+            */}
 
-              {/* My messages */}
+            {/* My messages */}
+            {/*
               <div class="message message_right">
                 <div class="message_box">
                   <div class="message_content">
@@ -106,7 +165,8 @@ const Discussion =() =>{
               </div>
               <div class="clear"></div>
             
-            </div>
+             </div>
+            */}
 
             {/* Text box */}
             <div id="send">
