@@ -4,6 +4,7 @@ const http = require('http');
 const express = require('express')
 const userRoutes = require('./routes/userRoutes')
 const chatRoutes = require('./routes/chatRoutes')
+const messageRoutes = require('./routes/messageRoutes');
 const mongoose = require('mongoose')
 const path = require('path');
 const cors = require('cors');
@@ -20,6 +21,7 @@ app.use((req, res, next) => {
 app.use(express.static(path.join(__dirname, '../frontend/build')));
 app.use('/user/',userRoutes)
 app.use('/chat/',chatRoutes)
+app.use('/message/',messageRoutes)
 app.get('*', (req, res, next) => {
 	res.sendFile(path.join(__dirname, '../frontend/build', 'index.html'));
 	next()  
