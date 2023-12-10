@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import {Helmet} from "react-helmet";
 
 const SignIn = () =>{
     const navigate = useNavigate(); //navigate function
@@ -47,6 +48,30 @@ const SignIn = () =>{
         }
     });
 
+    if(errorMessages.length ===0){
+        try{
+            const config = {
+                header:{
+                    "content-type": "application/json",
+                },
+            };
+            const response = await axios.post("/user/sign_in", data, config);
+            console.log("Success"); 
+            const username = response.data.username;
+            navigate(`/select_discussion/${username}`);
+        }
+        catch (e){
+            // 401 is the authentication error 
+            if (e.response && e.response.status ===401){
+                alert("Incorrect username or password. Please try again.")
+            }
+            else{
+                console.error("Error during sign in", e);
+                alert("An error occurred. Please try again later.");
+            }
+        }
+    };
+
     //Do not submit the form since there is an error message
     if(errorMessages.length > 0 ){
         alert(`Please complete the following fields: \n${errorMessages.join('\n')}`);
@@ -60,11 +85,11 @@ const SignIn = () =>{
                   "Content-type": "application/json",
                 },
               };
-        
-
-        const response = await axios.post("/api/user/register", data, config);
-    console.log("Success"); 
-    navigate('/select_discussion'); //redirect to select discussion page 
+            const response = await axios.post("/user/sign_in", data, config);
+            console.log("Success"); 
+            //navigate('/select_discussion'); //redirect to select discussion page
+            const username = response.data.username;
+            navigate(`/select_discussion/${username}`);
     } catch (e) {
         console.log("Error", e.stack);
         console.log("Error", e.name);
@@ -77,13 +102,17 @@ const SignIn = () =>{
 
     return (
         <div className="signIn" >
-            <div className="circle1"></div>
-            <div className="circle2"></div>
-            <div className="circle3"></div>
-            <div className="circle4"></div>
-            <div className="circle5"></div>
+            <Helmet>
+                <title>Sign In</title>
+            </Helmet>
             
             <form className="login-form" onSubmit={handleSubmit}>
+                <div className="circle1"></div>
+                <div className="circle2"></div>
+                <div className="circle3"></div>
+                <div className="circle4"></div>
+                <div className="circle5"></div>
+            
                 <h3>Please enter your username and password</h3>
                 <div className="row">
                     <input size='25' type ='text' name='username' placeholder="Username" onChange={handleChange}/>

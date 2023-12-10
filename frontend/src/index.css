@@ -1,22 +1,45 @@
 .landing {
-  overflow: hidden;
+  position:relative;
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 100vh;
-  width: 100vw;
   background-color: #1B2432;
-  background-image: url('./assets/tree.png'), url('./assets/birds.png');
-  background-repeat: no-repeat , no-repeat;
-  background-position: -8% 100%, 100% 0.1px;
-  background-size: 35%;
+  background-image: url('./assets/background .png');
+  background-repeat: no-repeat
+  
 }
-.landing h2{
-  font-size: 25px;
+.birds {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: url('./assets/birds.png') no-repeat 100% 0.1px;
+  background-size: 40%;
+  z-index: 1; /* Above the main content but below the text */
+  width: 100%; /* Takes full width of the container */
+  height: 100%; /* Takes full height of the container */
+}
+
+.landing .row h2{
+  position: relative; /* This will allow z-index to take effect */
+  z-index: 2;
+  font-size: 30px;
   white-space: nowrap; /* prevent the text from wrapping */
   color: #FDF7E4;
   font-family: 'Snell Roundhand', 'cursive';
-  padding: 70px; 
+  background-color: transparent;
+  justify-content: center;
+  margin-top: 150px;
+}
+@media only screen and (max-width: 600px) {
+  .landing .row h2{
+    font-size: 20px;
+    white-space: nowrap; /* prevent the text from wrapping */
+    color: #FDF7E4;
+    font-family: 'Snell Roundhand', 'cursive';
+    background-color: transparent;
+    margin-top: 150px;
+  }
+  
 
 }
 
@@ -30,6 +53,7 @@
 }
 
 .landing .buttons button{
+  z-index: 2;
   margin: 30px;
   padding: 20px 40px;
   border-radius: 25px;
@@ -43,12 +67,12 @@
   font-family: 'Snell Roundhand', 'cursive';
 }
 .landing .buttons button:hover{
+  position: relative; /* This establishes a new stacking context for the buttons */
+  z-index: 2;
   box-shadow: 0 5px 10px #7C93C3;
   transform: scale(1.05);
   background: #8355BD;
 }
-
-
 
 .registration {
   background-color:transparent;
@@ -57,7 +81,6 @@
   align-items: center;
   justify-content: center;
   height: 100vh;
-  width: 100vw;
   padding: 50px;
   background: linear-gradient(-140deg, #974EC3 5%, #1B2432 38%);
   
@@ -74,7 +97,7 @@
 }
 
 .registration .row{
-  background-color:transparent;
+  background-color:transparent !important;
   display: flex;
   justify-content: space-between;
   margin-bottom: 15px;
@@ -132,7 +155,7 @@
 
 
 .signIn {
-  overflow: visible;
+  
   display: flex;
   justify-content: center;
   height: 100vh;
@@ -150,27 +173,36 @@
 .signIn h3{
   color:white;
   font-family: 'Snell Roundhand', 'cursive';
-  padding-top: 130px;
+  padding-top: 120px;
   text-align: center;
 }
 
 .signIn .login-form{
   position: relative;
-  margin-bottom: 15px;
+  margin-bottom: 50px;
+  margin-top:10px;
+  background-color: transparent !important;
+  border: 2px solid transparent !important;
+  outline: none !important;
+  box-shadow: none !important;
 }
 .signIn .login-form input{
   width: 100%;
+  height:10px;
   padding: 9px;
   margin: 25px 0 ;
-  background: transparent;
-  border: none;
-  border-bottom: 2px solid #FFF2D8;
+  background-color: transparent !important;
+  border: 2px solid transparent !important;
+  border: none !important;
+  border-bottom: 2px solid #FFF2D8 !important;
   outline: none;
+  border-radius: 25%;
   color: white;
   font-family: 'Snell Roundhand', 'cursive';
   font-size: 1.0em;
   text-align: center;
   transition: all 0.3s ease-in-out;
+  box-shadow: none !important;
 }
 
 .signIn .login-form input::placeholder{

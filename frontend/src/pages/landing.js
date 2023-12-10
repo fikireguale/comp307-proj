@@ -8,15 +8,21 @@ const Landing = () =>{
     const headline1 = "Beyond words, Above Expectations -"
     const headline2 = "Your Nest for Exceptional Communication!"
 
-    const toselectDiscussion = () => {
-        navigate('/discussion')
+    const tosignIn = () => {
+        navigate('/signIn')
+    }
+    const tosignUp = () => {
+        navigate('/Registration')
     }
     
     return (
         <div >
             <Navbar/>
+            <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
             
             <div className="landing">
+                <div class="birds"></div>
+                
                 <div className="row">
                     <h2>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         {headline1.split('').map((letter, index)=> 
@@ -33,12 +39,15 @@ const Landing = () =>{
                         ))}
                     </h2>
 
+                    {/*
+
                     <div className="buttons">
-                        <button>Download to your Desktop</button>
-                        <button onClick={toselectDiscussion}>Open Perch in your browser</button>
+                        <button onClick={tosignUp}>Sign Up</button>
+                        <button onClick={tosignIn}>Sign In</button>
 
 
                     </div>
+                    */}
 
                     
                     
