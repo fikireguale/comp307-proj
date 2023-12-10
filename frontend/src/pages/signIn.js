@@ -48,6 +48,30 @@ const SignIn = () =>{
         }
     });
 
+    if(errorMessages.length ===0){
+        try{
+            const config = {
+                header:{
+                    "content-type": "application/json",
+                },
+            };
+            const response = await axios.post("/user/sign_in", data, config);
+            console.log("Success"); 
+            const username = response.data.username;
+            navigate(`/select_discussion/${username}`);
+        }
+        catch (e){
+            // 401 is the authentication error 
+            if (e.response && e.response.status ===401){
+                alert("Incorrect username or password. Please try again.")
+            }
+            else{
+                console.error("Error during sign in", e);
+                alert("An error occurred. Please try again later.");
+            }
+        }
+    };
+
     //Do not submit the form since there is an error message
     if(errorMessages.length > 0 ){
         alert(`Please complete the following fields: \n${errorMessages.join('\n')}`);
