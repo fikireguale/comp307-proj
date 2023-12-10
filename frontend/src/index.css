@@ -469,12 +469,12 @@
 
 /* -------------------- Select Discussion -------------------------- */
 .select_discussion{
-  background-color: #1B2432;
   color:white;
   height: 100vh;
   font-family:Arial, Helvetica, sans-serif;
   padding-left: 3%;
   padding-right: 3%;
+  background-color: #1B2432;
 }
 
 .select_discussion header{
@@ -522,6 +522,10 @@
   color: #2b2b41;
   cursor: pointer;
 
+}
+
+.select_discussion .create-btn{
+  background-color: #007bff;
 }
 
 
