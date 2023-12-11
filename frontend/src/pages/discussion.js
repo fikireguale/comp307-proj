@@ -144,10 +144,8 @@ const Discussion =() =>{
               {filteredMessages.map((message) => (
                 <div key={message.id} className={`message message_${message.user === users[0].name ? "right" : "left"}`}>
                   <div className="message_box">
-                    <div className="message_content">
-                      <div className="message_text">{message.text}</div>
-                      {/* Add timestamp and user icon if needed */}
-                    </div>
+                    <div className="message_text">{message.text}</div>
+                    {/* Add timestamp and user icon if needed */}
                   </div>
                 </div>
               ))}
