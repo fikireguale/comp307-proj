@@ -94,7 +94,7 @@ router.post('/register', async (req, res) =>{
           // Find the user by username
           const regex = new RegExp(username, 'i');
           const userInfo = await user.findOne({ username: { $regex: regex } });
-          const chatInfo = await chat.findOne({ chatName });
+          const chatInfo = await chat.findOne({ name: chatName });
 
           if (userInfo){
 
@@ -176,7 +176,7 @@ router.post('/register', async (req, res) =>{
           // Find the user by username
           const regex = new RegExp(username, 'i');
           const userInfo = await user.findOne({ username: { $regex: regex } });
-          const chatInfo = await chat.findOne({ chatName });
+          const chatInfo = await chat.findOne({ name: chatName });
 
           if (userInfo){
 
@@ -209,6 +209,6 @@ router.post('/register', async (req, res) =>{
         }
       });
 
-//module.exports = { allUsers, registerUser, authUser };
+
 
 module.exports = router
