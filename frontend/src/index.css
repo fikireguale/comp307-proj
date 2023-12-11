@@ -495,6 +495,15 @@
   border: none;
   
 }
+
+.discussion #send_btn i{
+  color: white;
+  height:5px;
+  /* font-family: “Font Awesome 5 Free”;
+  font-weight: 900;
+  content: “\f1d8”; */
+}
+
 .discussion #send_btn:hover{
   cursor: pointer;
 }

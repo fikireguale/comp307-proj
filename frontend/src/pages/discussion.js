@@ -1,12 +1,16 @@
 
 import React, {useState, useMemo, useEffect} from 'react';
 import axios from 'axios';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 
 const Discussion =() =>{
 
-  const navigate = useNavigate();
+  const navigate = useNavigate(); //navigate function
 
+
+    const toUserManagement = () => {
+        navigate('/userManagement');
+    };
   // sample user data with icons
   const users = [
     { name: "User 1", icon: '../assets/user1.png'},
@@ -132,7 +136,7 @@ const Discussion =() =>{
   return (
       <div className="discussion">
         <div class="flexbox">
-          
+
           <section class="left_column">
             <img class="home_icon" src="../assets/home_icon.png"></img>
           </section>
@@ -142,6 +146,7 @@ const Discussion =() =>{
 
             <header class="course_name">
               <h1>Comp 307</h1>
+              <button class="manageMember_btn" onClick={toUserManagement}>Manage Users</button>
             </header>
             <div class="search">
               <input type="text" id="searchInput" placeholder="Search..." value={searchTerm} onChange={handleSearchChange} style={inputTextStyle}/>
