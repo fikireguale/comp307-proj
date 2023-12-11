@@ -7,6 +7,11 @@ const Chat = require('../models/chatModel');
 const Message = require('../models/messageModel')
 
 router.post('/send_message', async (req, res) => {
+    /*
+        data =  {“chatName”: “Comp307” ,”username”: "John", “content”: “Hello”, “pin”: false}
+        axios.post(`/message/send_message/`, data, config)
+	    returns: nothing
+    */
     try{
         const { chatName, username, content, pin } = req.body;
 
@@ -55,6 +60,11 @@ router.post('/send_message', async (req, res) => {
 
 
 router.get('/get_messages', async (req, res) => {
+    /*
+        data = {}
+	    axios.get(`/message/get_messages?chatName=Comp307&user=John`, data, config)
+	    returns: messages as list
+    */
     try{
         const { chatName, user } = req.query;
 
@@ -76,6 +86,12 @@ router.get('/get_messages', async (req, res) => {
 })
 
 router.get('/get_pins', async (req, res) => {
+    /*
+        data = {}
+	    axios.get(`/message/get_pins?chatName=Comp307&user=John`, data, config)
+        returns: pinned messages as list
+    */
+
     try{
         const { chatName, user } = req.query;
 
@@ -97,6 +113,12 @@ router.get('/get_pins', async (req, res) => {
 })
 
 router.post('/un_pin', async (req, res) => {
+    /*
+    data = {“chatName”: “Comp307” ,”user”: "John", “messageID”: “65765b3a4c39cdead146ade8”}
+    axios.post(`/message/un_pin`, data, config)
+    returns: <nothing/success>
+    */
+
     try{
         const { chatName, user, messageID } = req.body;
 
