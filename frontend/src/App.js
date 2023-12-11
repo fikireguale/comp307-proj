@@ -21,7 +21,7 @@ function App() {
     <>
     <Helmet>
       <title>Perch</title>
-      {/* You can also add common meta tags, links here */}
+      
     </Helmet>
    
     
