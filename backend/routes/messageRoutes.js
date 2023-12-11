@@ -69,7 +69,7 @@ router.get('/get_messages', async (req, res) => {
         const { chatName, user } = req.query;
 
         const userInfo = await User.findOne({ username: user });
-        const chatInfo = await Chat.findOne({ name: chatName });
+        const chatInfo = await Chat.findOne({ name: chatName }).populate("messages");
 
         if (!userInfo) {
             return res.status(400).json({ error: 'Invalid user' })
@@ -96,7 +96,7 @@ router.get('/get_pins', async (req, res) => {
         const { chatName, user } = req.query;
 
         const userInfo = await User.findOne({ username: user });
-        chatInfo = await Chat.findOne({ name: chatName });
+        chatInfo = await Chat.findOne({ name: chatName }).populate("pins");
 
         if (!userInfo) {
             return res.status(400).json({ error: 'Invalid user' });
