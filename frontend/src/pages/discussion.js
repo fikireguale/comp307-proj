@@ -5,13 +5,13 @@ import { useParams, useNavigate } from 'react-router-dom';
 
 
 const Discussion =() =>{
-
+  
   const chatName = useParams().discussionName;
   const username = useParams().username;
   console.log(useParams());
 
   const navigate = useNavigate(); //navigate function
-
+  
 
   const toSelectDiscussion = () => {
     navigate(`/select_discussion/${username}`);
@@ -27,7 +27,6 @@ const Discussion =() =>{
     { name: "User 1", icon: '../assets/user1.png'},
     { name: "User 2", icon: '../assets/user2.png'}
   ];
-
 
 
   // function to generate current timestamp
