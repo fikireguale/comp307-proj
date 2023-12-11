@@ -11,7 +11,7 @@ router.post('/create_chat', async (req, res) => {
         data = {“chatName”: “Comp307” ,”adminName”: "John"}
 		        Note: admin is the username as a string extracted from the url
         axios.post(`/chat/create_chat/`, data, config)
-        returns: <nothing/success in console>
+        returns: <nothing/success>
     */
 
     try{
@@ -52,7 +52,7 @@ router.post('/delete_chat', async (req, res) => {
         data = {“chatName”: “Comp307” ,”username”: "John"}
 		        Note: admin is the username as a string extracted from the url
 	    axios.post(`/chat/delete_chat/`, data, config)
-        returns: <nothing/success in console>
+        returns: <nothing/success>
     */
 
     try{

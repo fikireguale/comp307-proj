@@ -11,6 +11,12 @@ router.get('/', (req, res) => {
 
 // POST a new user
 router.post('/register', async (req, res) =>{
+  /*
+    data =  { "firstName": "John", "lastName": "Smith", "email": "john@gmail.com",  
+    "phoneNumber": "5145342267", "username": "John", "password": "123456"}
+    axios.post("/user/register", data, config);
+    returns: <nothing/success>
+  */
         try {
             // Extract data from the request body
             const { firstName, lastName, email, phoneNumber,
@@ -37,6 +43,11 @@ router.post('/register', async (req, res) =>{
 
 
   router.post('/sign_in', async (req, res) =>{
+    /* 
+      data = { "username": "John", "password": "123456"}
+      axios.post("/user/sign_in", data, config);
+      returns: <nothing/success>
+    */
     try{
       // Extract data from the request body
       const { username, password } = req.body;
@@ -71,6 +82,11 @@ router.post('/register', async (req, res) =>{
 
 
       router.post('/add_user_chat/', async (req, res) => {
+        /*
+	        data = {"username": "John", "chatName": "COMP307"}
+          axios.get("/user/add_user_chat", data, config);
+          returns: <nothing/success>
+        */
         try {
           
           const { username, chatName } = req.body;
@@ -124,6 +140,11 @@ router.post('/register', async (req, res) =>{
 
 
       router.get('/get_user_chat/', async (req, res) => {
+        /*
+	        data = {"username": "John"}
+	        axios.get("/user/get_user_chat", data, config);
+	        returns: id of chats
+        */
         try {
           const { username } = req.query;
           const regex = new RegExp(username, 'i');
@@ -143,6 +164,11 @@ router.post('/register', async (req, res) =>{
 
 
       router.post('/delete_user_chat/', async (req, res) => {
+        /*
+          data = {"username": "John", "chatName": "COMP307"}
+          axios.get("/user/delete_user_chat", data, config);
+          returns: <nothing/success>
+        */
         try {
           
           const { username, chatName } = req.body;

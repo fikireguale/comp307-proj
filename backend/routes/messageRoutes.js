@@ -10,7 +10,7 @@ router.post('/send_message', async (req, res) => {
     /*
         data =  {“chatName”: “Comp307” ,”username”: "John", “content”: “Hello”, “pin”: false}
         axios.post(`/message/send_message/`, data, config)
-	    returns: nothing
+	    returns: <nothing/success>
     */
     try{
         const { chatName, username, content, pin } = req.body;
@@ -63,7 +63,7 @@ router.get('/get_messages', async (req, res) => {
     /*
         data = {}
 	    axios.get(`/message/get_messages?chatName=Comp307&user=John`, data, config)
-	    returns: messages as list
+	    returns: <nothing/success>
     */
     try{
         const { chatName, user } = req.query;
