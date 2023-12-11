@@ -109,7 +109,9 @@ const Select_Discussion =() => {
             "Content-type": "application/json",
           },
         };
+
         const data4 = {"username": `${encodeURIComponent(username)}`, "chatName": inputName2}
+        console.log("BEFORE R4", data4)
         const response4 = await axios.post("/user/add_user_chat/", data4, config3);
         console.log("R4", response4)
         setEditModalIsOpen(false);
