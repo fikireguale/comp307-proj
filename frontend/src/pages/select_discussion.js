@@ -182,7 +182,7 @@ const Select_Discussion =() => {
       <div className="select_board">
         {console.log("BEFORE MAP", chats)}
         {chats.map((chat) => (
-            <div className="item" key={chat.id} onClick={()=> toDiscussionBoard(chat.chatName)}>
+            <div className="item" key={chat.id} onClick={()=> toDiscussionBoard(chat.name)}>
             <img src={chat.image} alt="Course" />
             <div className="course_text">
                 {console.log("CHATNAME:", chat.name)}
