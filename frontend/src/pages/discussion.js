@@ -5,19 +5,25 @@ import { useParams, useNavigate } from 'react-router-dom';
 
 const Discussion =() =>{
 
+  const chatName = useParams().discussionName;
+  const username = useParams().username;
+
   const navigate = useNavigate(); //navigate function
 
+  const toSelectDiscussion = () => {
+    navigate(`/select_discussion/${username}`);
+  };
 
-    const toUserManagement = () => {
-        navigate('/userManagement');
-    };
+
+  const toUserManagement = () => {
+      navigate(`/userManagement/${username}/${chatName}`);
+  };
+
   // sample user data with icons
   const users = [
     { name: "User 1", icon: '../assets/user1.png'},
     { name: "User 2", icon: '../assets/user2.png'}
   ];
-  const chatName = useParams().discussionName;
-  const username = useParams().username;
 
  
 
@@ -119,6 +125,11 @@ const Discussion =() =>{
     discussionBoard.scrollTop = discussionBoard.scrollHeight;
     */
   }
+
+
+  function pinMessage(){
+    // do something to pin message
+  }
   //if not empty then change the color to white 
   const inputTextStyle = searchTerm ? {color:'white'} : {};
 
@@ -138,7 +149,7 @@ const Discussion =() =>{
         <div class="flexbox">
 
           <section class="left_column">
-            <img class="home_icon" src="../assets/home_icon.png"></img>
+            <button id="home_btn" onClick={toSelectDiscussion}><i class="fa-solid fa-house-chimney fa-3x"></i></button>
           </section>
 
 
@@ -156,7 +167,7 @@ const Discussion =() =>{
           <section class="discussion_board">
             <header class="channel_name">
               <h1>Channel 1</h1>
-              <img src="../assets/pin.png"></img>
+              <button id="pin_btn" onClick={pinMessage}><i class="fa-solid fa-thumbtack"></i></button>
             </header>
 
 

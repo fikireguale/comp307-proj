@@ -371,21 +371,41 @@
 }
 
 /* Left Column */
-.discussion .home_icon{
-  width: 80%;
+
+.discussion #home_btn{
   position: absolute;
-  bottom: 0;
+  bottom: 30px;
   left: 0;
   right:0;
   margin: auto;
+  background: none;
+  border: none;
 }
+.discussion #home_btn:hover{
+  cursor: pointer;
+}
+
+.discussion .fa-house-chimney{
+  width:max-content;
+  color:white;
+  width: 30px;
+}
+
+
 
 /* Channel Selection */
 .discussion .course_name{
+  position:relative;
   height: 80px;
   margin-left: 15px;
   display: flex;
   align-items: center;
+}
+
+.discussion .manageMember_btn{
+  position: absolute;
+  right: 0;
+  margin-right: 10px;
 }
 
 .discussion .search input[type=text]{
@@ -408,10 +428,21 @@
   margin-left: 15px;
 }
 
-.discussion .channel_name img{
+.discussion #pin_btn{
   position: absolute;
   right: 0;
   margin-right: 30px;
+  background: none;
+  border: none;
+}
+
+.discussion .channel_name .fa-thumbtack{
+  color: white;
+  font-size: medium;
+}
+
+.discussion #pin_btn:hover{
+  cursor: pointer;
 }
 
 
@@ -459,6 +490,7 @@
     text-align: left;
     color: white;
     padding: 5px;
+    font-size:medium;
   }
 
   .discussion .formatting-bar{
@@ -477,7 +509,7 @@
       margin-top: 10px;
       
     }
-    .discussion.formatting-bar .btn:hover{
+    .discussion .formatting-bar .btn:hover{
       cursor: pointer;
     }
 
