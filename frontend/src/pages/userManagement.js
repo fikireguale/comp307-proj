@@ -7,6 +7,7 @@ const UserManagement = () => {
   const [newUserName, setNewUserName] = useState('');
   const [errorMessage, setErrorMessage] = useState(''); // Error message state
   const { username } = useParams();
+  const { chatName } = useParams();
 
   // Function to refresh the user list from the server
 
@@ -38,7 +39,7 @@ const UserManagement = () => {
     const userExists = users.some(user => user.name === newUserName);
     if (newUserName && !userExists) {
       try {
-        const response = await axios.post('/add_user_chat/', { username: newUserName, chatName: "COMP307" });
+        const response = await axios.post('/add_user_chat/', { username: newUserName, chatName: chatName });
         console.log(response); // log the response from the server
         setUsers([...users, { name: newUserName }]); // Add user to local state
         setNewUserName(''); // Reset the input field
@@ -53,7 +54,7 @@ const UserManagement = () => {
 
   const deleteUser = async (userName) => {
     try {
-      const response = await axios.post('/delete_user_chat/', { username: userName, chatName: "COMP307" });
+      const response = await axios.post('/delete_user_chat/', { username: userName, chatName: chatName });
       console.log(response.data);
       console.log(response.status) // Log the response from the server
       setUsers(users.filter(user => user.name !== userName)); // Remove user from local state
