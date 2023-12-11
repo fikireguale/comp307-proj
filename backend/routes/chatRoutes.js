@@ -93,6 +93,22 @@ router.post('/delete_chat', async (req, res) => {
         res.status(500).json({ error: 'Internal Server Error' });
     }
 })
+//check if the user exists 
+router.get('/check_user', async (req, res) => {
+    const { username } = req.query;
+
+    try {
+        const userExists = await User.findOne({ username: username });
+        if (userExists) {
+            res.json({ exists: true });
+        } else {
+            res.json({ exists: false });
+        }
+    } catch (error) {
+        console.error('Error checking user:', error);
+        res.status(500).json({ error: 'Internal Server Error' });
+    }
+});
 
 router.get('/get_discussion_users', async (req, res) => {
     /*

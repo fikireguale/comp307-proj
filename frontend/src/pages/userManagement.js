@@ -13,7 +13,7 @@ const UserManagement = () => {
 
   const fetchUsers = async () => {
     try {
-      const response = await axios.get('/get_users_chat/', { params: { username } });
+      const response = await axios.get('/chat/get_discussion_users', { params: { name: chatName } });
       // Check if the response data is an array before setting the state
       if (Array.isArray(response.data)) {
         setUsers(response.data);
@@ -35,28 +35,32 @@ const UserManagement = () => {
   }, []);
 
   const addUser = async () => {
-    // Check whether the user exists before adding
-    const userExists = users.some(user => user.name === newUserName);
-    if (newUserName && !userExists) {
-      try {
-        const response = await axios.post('/add_user_chat/', { username: newUserName, chatName: chatName });
-        console.log(response); // log the response from the server
-        setUsers([...users, { name: newUserName }]); // Add user to local state
-        setNewUserName(''); // Reset the input field
-      } catch (error) {
-        console.error('There was an error adding the user', error);
-        setErrorMessage('Failed to add user.');
+    if (!newUserName) {
+      alert('Please enter a username.');
+      return;
+    }
+  
+    try {
+      // Check if user exists in the database
+      const checkUserResponse = await axios.get('/user/check_user', { params: { username: newUserName } });
+      if (!checkUserResponse.data.exists) {
+        alert('User does not exist!');
+        return;
       }
-    } else {
-      alert('User already exists or name is empty!');
+  
+      // Add user to the chat
+      const response = await axios.post('/chat/add_user_chat/', { username: newUserName, chatName: chatName });
+      setUsers([...users, { name: newUserName }]); // Add user to local state
+      setNewUserName(''); // Reset the input field
+    } catch (error) {
+      console.error('There was an error adding the user', error);
+      setErrorMessage('Failed to add user.');
     }
   };
 
   const deleteUser = async (userName) => {
     try {
-      const response = await axios.post('/delete_user_chat/', { username: userName, chatName: chatName });
-      console.log(response.data);
-      console.log(response.status) // Log the response from the server
+      await axios.post('/chat/delete_user_chat/', { username: userName, chatName: chatName });
       setUsers(users.filter(user => user.name !== userName)); // Remove user from local state
     } catch (error) {
       console.error('There was an error deleting the user', error);
