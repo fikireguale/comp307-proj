@@ -44,6 +44,7 @@
     ]
   },
   "devDependencies": {
+    "eslint": "^8.55.0",
     "postcss": "^8.4.31",
     "postcss-preset-mantine": "^1.11.0",
     "postcss-simple-vars": "^7.0.1"

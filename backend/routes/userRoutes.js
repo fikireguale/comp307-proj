@@ -2,7 +2,7 @@ const express = require('express')
 const router = express.Router()
 const user = require('../models/userModel')
 const bcrypt = require('bcrypt');
-const chat = require('../models/chatModel');
+const Chat = require('../models/chatModel');
 
 // GET all users
 router.get('/', (req, res) => {
@@ -11,6 +11,12 @@ router.get('/', (req, res) => {
 
 // POST a new user
 router.post('/register', async (req, res) =>{
+  /*
+    data =  { "firstName": "John", "lastName": "Smith", "email": "john@gmail.com",  
+    "phoneNumber": "5145342267", "username": "John", "password": "123456"}
+    axios.post("/user/register", data, config);
+    returns: <nothing/success>
+  */
         try {
             // Extract data from the request body
             const { firstName, lastName, email, phoneNumber,
@@ -37,6 +43,11 @@ router.post('/register', async (req, res) =>{
 
 
   router.post('/sign_in', async (req, res) =>{
+    /* 
+      data = { "username": "John", "password": "123456"}
+      axios.post("/user/sign_in", data, config);
+      returns: <nothing/success>
+    */
     try{
       // Extract data from the request body
       const { username, password } = req.body;
@@ -71,14 +82,20 @@ router.post('/register', async (req, res) =>{
 
 
       router.post('/add_user_chat/', async (req, res) => {
+        /*
+	        data = {"username": "John", "chatName": "COMP307"}
+          axios.get("/user/add_user_chat", data, config);
+          returns: <nothing/success>
+        */
         try {
           
           const { username, chatName } = req.body;
       
           // Find the user by username
           const regex = new RegExp(username, 'i');
+          const regex2 = new RegExp(chatName, 'i');
           const userInfo = await user.findOne({ username: { $regex: regex } });
-          const chatInfo = await chat.findOne({ chatName });
+          const chatInfo = await Chat.findOne({ name: { $regex: regex2 } });
 
           if (userInfo){
 
@@ -101,6 +118,12 @@ router.post('/register', async (req, res) =>{
               userInfo.userChats.push(chatInfo._id);
               // Save the updated user document
               const savedUser = await userInfo.save();
+              await Chat.findByIdAndUpdate(
+                chatInfo._id,
+                { $push: { users: savedUser.id } },
+                { new: true }
+            );
+    
               res.status(200).json(savedUser);
                 
             
@@ -124,6 +147,11 @@ router.post('/register', async (req, res) =>{
 
 
       router.get('/get_user_chat/', async (req, res) => {
+        /*
+	        data = {"username": "John"}
+	        axios.get("/user/get_user_chat", data, config);
+	        returns: id of chats
+        */
         try {
           const { username } = req.query;
           const regex = new RegExp(username, 'i');
@@ -143,14 +171,20 @@ router.post('/register', async (req, res) =>{
 
 
       router.post('/delete_user_chat/', async (req, res) => {
+        /*
+          data = {"username": "John", "chatName": "COMP307"}
+          axios.get("/user/delete_user_chat", data, config);
+          returns: <nothing/success>
+        */
         try {
           
           const { username, chatName } = req.body;
       
           // Find the user by username
           const regex = new RegExp(username, 'i');
+          const regex2 = new RegExp(chatName, 'i');
           const userInfo = await user.findOne({ username: { $regex: regex } });
-          const chatInfo = await chat.findOne({ chatName });
+          const chatInfo = await Chat.findOne({ name: { $regex: regex2 } });
 
           if (userInfo){
 
@@ -163,6 +197,8 @@ router.post('/register', async (req, res) =>{
               try {
                 await userInfo.updateOne({ $pull: { userChats: chatInfo._id } });
                 const savedUser = await userInfo.save();
+                await chatInfo.updateOne({ $pull: { users: userInfo._id } });
+                const savedChat = await chatInfo.save();
                 console.log("deleted")
                 res.status(201).json(savedUser);
               } catch (updateErr) {
@@ -183,6 +219,6 @@ router.post('/register', async (req, res) =>{
         }
       });
 
-//module.exports = { allUsers, registerUser, authUser };
+
 
 module.exports = router
