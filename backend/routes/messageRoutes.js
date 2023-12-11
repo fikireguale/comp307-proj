@@ -21,14 +21,15 @@ router.post('/send_message', async (req, res) => {
         if (!user || !chat) {
             return res.status(400).json({ error: 'Invalid sender or chat' });
         }
-
+        console.log("hey",username)
         // Check if content is not empty
         if (content.trim()) {
             // Create and save the new message
             const msg = new Message({
                 sender: user._id,
                 chat: chat._id,
-                content: content
+                content: content,
+                sendername: username
             });
 
             await msg.save();
