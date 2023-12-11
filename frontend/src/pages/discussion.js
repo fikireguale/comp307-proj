@@ -5,35 +5,26 @@ import { useParams, useNavigate } from 'react-router-dom';
 
 
 const Discussion =() =>{
-
   const chatName = useParams().discussionName;
   const username = useParams().username;
 
   const navigate = useNavigate(); //navigate function
-<<<<<<< HEAD
 
   const toSelectDiscussion = () => {
     navigate(`/select_discussion/${username}`);
   };
 
-=======
->>>>>>> Annie
   // sample user data with icons
   const users = [
     { name: "User 1", icon: '../assets/user1.png'},
     { name: "User 2", icon: '../assets/user2.png'}
   ];
-<<<<<<< HEAD
-
- 
-=======
-  const chatName = useParams().discussionName;
-  const username = useParams().username;
+  
   const toUserManagement = () => {
     navigate(`/userManagement/${username}`);
     //navigate('/userManagement');
   };
->>>>>>> Annie
+
 
   // function to generate current timestamp
   function getCurrentTime(){
