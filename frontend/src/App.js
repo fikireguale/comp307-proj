@@ -5,7 +5,7 @@ import Landing from './pages/landing';
 import Registration from './pages/Registration';
 import SignIn from './pages/signIn';
 import Select_Discussion from './pages/select_discussion';
-
+import UserManagement from './pages/userManagement';
 
 import React, { useEffect } from 'react';
 
@@ -34,6 +34,7 @@ function App() {
         <Route path='/signIn' element={<SignIn/>}/>
         <Route path='/discussion/:username/:discussionName' element={<Discussion/>}/>
         <Route path='/select_discussion/:username' element={<Select_Discussion/>}/>
+        <Route path='/user-management' element={<UserManagement />} />
           
       </Routes>
     </Router>
