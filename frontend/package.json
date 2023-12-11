@@ -13,6 +13,7 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-helmet": "^6.1.0",
+    "react-modal": "^3.16.1",
     "react-router-dom": "^6.19.0",
     "react-scripts": "5.0.1",
     "web-vitals": "^2.1.4"
@@ -42,6 +43,7 @@
     ]
   },
   "devDependencies": {
+    "eslint": "^8.55.0",
     "postcss": "^8.4.31",
     "postcss-preset-mantine": "^1.11.0",
     "postcss-simple-vars": "^7.0.1"

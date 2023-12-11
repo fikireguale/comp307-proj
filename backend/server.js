@@ -22,19 +22,9 @@ app.use(express.static(path.join(__dirname, '../frontend/build')));
 app.use('/user/',userRoutes)
 app.use('/chat/',chatRoutes)
 app.use('/message/',messageRoutes)
-app.get('*', (req, res, next) => {
-	res.sendFile(path.join(__dirname, '../frontend/build', 'index.html'));
-	next()  
+app.get('*', (req, res) => {
+	res.sendFile(path.join(__dirname, '../frontend/build', 'index.html'));  
 });
-
-app.get('/t', (req, res, next) => {
-		res.json({mssg: 'GET all workouts'})
-		next()	  
-})
-
-// routes
-//app.use('/api/user/',userRoutes)
-
 
 //connect to db
 mongoose.connect(process.env.MONGO_URI)

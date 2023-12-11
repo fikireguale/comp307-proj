@@ -79,16 +79,51 @@ const Select_Discussion =() => {
     };
 
     const [editModalIsOpen, setEditModalIsOpen] = useState(false);
+    const [newChatName, setNewChatName] = useState('');
+  
 
-    function createDiscussion(){
-        // Do something (backend)
+    const createDiscussion= async (inputName) =>{
+      try {
+        const config2 = {
+          headers: {
+            "Content-type": "application/json",
+          },
+        };
+        const data3 = {"chatName": inputName, "adminName": `${encodeURIComponent(username)}`}
+        console.log("Request Data3", data3)
+        const response3 = await axios.post("/chat/create_chat/", data3, config2);
+        console.log("R3", response3)
         setEditModalIsOpen(false);
+      } catch (e) {
+        console.log("Error", e.stack);
+        console.log("Error", e.name);
+        console.log("Error", e.message);
+        alert("Chat already exists")
+    }
     }
 
-    function joinDiscussion(){
-        // Do something (backend)
+    const joinDiscussion= async (inputName2) =>{
+      try {
+        const config3 = {
+          headers: {
+            "Content-type": "application/json",
+          },
+        };
+        const data4 = {"username": `${encodeURIComponent(username)}`, "chatName": inputName2}
+        const response4 = await axios.post("/user/add_user_chat/", data4, config3);
+        console.log("R4", response4)
         setEditModalIsOpen(false);
+      } catch (e) {
+        console.log("Error", e.stack);
+        console.log("Error", e.name);
+        console.log("Error", e.message);
+        alert("Discussion does not exist, please create one or verify the name.")
     }
+    }
+
+    const handleInputChange = (event) => {
+      setNewChatName(event.target.value);
+    };
 
     const toDiscussionBoard = (chatName) =>{
       navigate(`/discussion/${encodeURIComponent(username)}/${chatName}`);
@@ -99,31 +134,21 @@ const Select_Discussion =() => {
 
     useEffect(() => {
       const fetchData = async () => {
-      try {
-        //console.log(`/user/get_user_chat/${encodeURIComponent(username)}`)
-        const response = await axios.get(`/user/get_user_chat/?username=${encodeURIComponent(username)}`);
-        console.log("RESPONSE:", response)
-        console.log("RESPONSE.DATA:", response.data)
-        if (response.status === 200) {
-        console.log("GOT DATA", response.data.chats)
-        //console.log(response.data.chats);
-        setChats((prevChats) => response.data.chats);
-          console.log(chats)
-        } else {
-          console.error('Failed to fetch chats');
+        try {
+          const response = await axios.get(`/user/get_user_chat/?username=${encodeURIComponent(username)}`);
+          if (response.status === 200) {
+            setChats(response.data.chats);
+          } else {
+            console.error('Failed to fetch chats');
+          }
+        } catch (error) {
+          console.error('Error fetching chats:', error);
         }
-      } catch (error) {
-        console.error('Error fetching chats:', error);
-      }
-    };
-
-    fetchData();
-  }, [username]); // Include username in the dependency array
-
-  useEffect(() => {
-    console.log('Current state:', chats);
-  }, [chats]);
+      };
   
+      fetchData();
+    }, [username, newChatName, editModalIsOpen]);
+  //        <a class="semester">Semester</a>
   return (
     <div className="select_discussion">
       <header>
@@ -138,106 +163,35 @@ const Select_Discussion =() => {
         <Modal isOpen={editModalIsOpen} style={customStyles} onRequestClose={() => {setEditModalIsOpen(false)}}>
            <div style={modalContentStyle}>
               <a style={titleStyle}>Course Code :</a>
-              <input type="text" placeholder="e.g. COMP307" style={inputStyle}></input>
+              <input
+              type="text"
+              placeholder="e.g. COMP307"
+              style={inputStyle}
+              value={newChatName}
+              onChange={handleInputChange}
+            />
            </div>
-           <button id="Create" style={pinkButtonStyle} onClick={createDiscussion}>Create</button>
-           <button id="Join" style={pinkButtonStyle} onClick={joinDiscussion}>Join</button>
+           <button id="Create" style={pinkButtonStyle} onClick={() => createDiscussion(newChatName)}>Create</button>
+           <button id="Join" style={pinkButtonStyle} onClick={() => joinDiscussion(newChatName)}>Join</button>
            <button id="Cancel" style={purpleButtonStyle} onClick={() => {setEditModalIsOpen(false)}}>Cancel</button>
         </Modal>
                 
-        <a class="semester">Semester</a>
+
       </div>
   
       <div className="select_board">
         {console.log("BEFORE MAP", chats)}
         {chats.map((chat) => (
             <div className="item" key={chat.id} onClick={()=> toDiscussionBoard(chat.chatName)}>
-            <img src="../assets/course_img.jpeg" alt="Course" />
+            <img src={chat.image} alt="Course" />
             <div className="course_text">
-                {console.log("CHATNAME:", chat.chatName)}
-              <h2>{chat.chatName}</h2>
+                {console.log("CHATNAME:", chat.name)}
+              <h2>{chat.name}</h2>
             </div>
           </div>
         ))}
       </div>
     </div>
-  );
-/*
-
-    return(
-        <div className="select_discussion">
-            <header>
-                <button class="logout" onClick={toLanding}>Logout</button>
-                
-            </header>
-
-            <div class="upper_bar">
-                <h1>Courses</h1>
-                <a class="btn btn--circle fa fa-plus" onClick={() => {setEditModalIsOpen(true)}}></a>
-                <Modal isOpen={editModalIsOpen} style={customStyles} onRequestClose={() => {setEditModalIsOpen(false)}}>
-                    <div style={modalContentStyle}>
-                        <a style={titleStyle}>Course Code :</a>
-                        <input type="text" placeholder="e.g. COMP307" style={inputStyle}></input>
-                    </div>
-                    <button id="Create" style={pinkButtonStyle} onClick={createDiscussion}>Create</button>
-                    <button id="Join" style={pinkButtonStyle} onClick={joinDiscussion}>Join</button>
-                    <button id="Cancel" style={purpleButtonStyle} onClick={() => {setEditModalIsOpen(false)}}>Cancel</button>
-                </Modal>
-                
-                <a class="semester">Semester</a>
-            </div>
-
-
-
-
-            
-            <div class="select_board">
-                <div class="item">
-                    <img src="../assets/course_img.jpeg"></img>
-                    <button class="btn fas fa-minus"></button>
-                    <div class="course_text">
-                        <h2>Course name1</h2>
-                        <a href="./discussion"></a>
-                        <p>course description</p>
-                    </div>
-                </div>
-                <div class="item">
-                    <img src="../assets/course_img.jpeg"></img>
-                    <button class="btn fas fa-minus"></button>
-                    <div class="course_text">
-                        <h2>Course name2</h2>
-                        <p>course description</p>
-                    </div>
-                </div>
-                <div class="item">
-                    <img src="../assets/course_img.jpeg"></img>
-                    <button class="btn fas fa-minus"></button>
-                    <div class="course_text">
-                        <h2>Course name3</h2>
-                        <p>course description</p>
-                    </div>
-                </div>
-                <div class="item">
-                    <img src="../assets/course_img.jpeg"></img>
-                    <button class="btn fas fa-minus"></button>
-                    <div class="course_text">
-                        <h2>Course name4</h2>
-                        <p>course description</p>
-                    </div>
-                </div>
-                <div class="item">
-                    <img src="../assets/course_img.jpeg"></img>
-                    <button class="btn fas fa-minus"></button>
-                    <div class="course_text">
-                        <h2>Course name5</h2>
-                        <p>course description</p>
-                    </div>
-                </div>
-            </div>
-
-
-        </div>
-    )
-}*/;
+  );;
 }
 export default Select_Discussion;
