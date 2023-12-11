@@ -18,13 +18,13 @@ const UserManagement = () => {
       if (Array.isArray(response.data)) {
         setUsers(response.data);
       } else {
-        console.error('Data received is not an array:', response.data);
-        setErrorMessage('Received invalid user data from server.');
+        console.error(' ', response.data);
+        setErrorMessage('');
         setUsers([]); // Reset users to an empty array
       }
     } catch (error) {
-      console.error('There was an error fetching the users', error);
-      setErrorMessage('Unable to fetch users.');
+      console.error('', error);
+      setErrorMessage('');
       setUsers([]); // Reset users to an empty array in case of error
     }
   };
@@ -54,7 +54,7 @@ const UserManagement = () => {
       setNewUserName(''); // Reset the input field
     } catch (error) {
       console.error('There was an error adding the user', error);
-      setErrorMessage('Failed to add user.');
+      setErrorMessage('');
     }
   };
 
@@ -64,7 +64,7 @@ const UserManagement = () => {
       setUsers(users.filter(user => user.name !== userName)); // Remove user from local state
     } catch (error) {
       console.error('There was an error deleting the user', error);
-      setErrorMessage('Failed to delete user.');
+      setErrorMessage('');
     }
   };
 
