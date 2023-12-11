@@ -1,4 +1,4 @@
-import React , {useState} from "react";
+import React, {useState, useMemo, useEffect} from 'react';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
 
@@ -12,11 +12,16 @@ const Discussion =() =>{
   const chatName = useParams().discussionName;
   const username = useParams().username;
 
+ 
+
   // function to generate current timestamp
   function getCurrentTime(){
     const now = new Date();
     return now.toLocaleTimeString([], {hour: '2-digit', minute: '2-digit'});
   }
+
+  
+  // Chat log
 
   // State to hold messages
   const [messages, setMessages] = useState([
@@ -65,7 +70,8 @@ const Discussion =() =>{
     } catch (e) {
       console.error("Error", e);
     }
-  
+
+ 
 
     /*
 
@@ -162,41 +168,11 @@ const Discussion =() =>{
 
             
 
-            {/* Time line */}
-            {/*
-              <div id="messages">
-            */}
 
-
-            {/* Others' messages */}
-            {/*
-              <div class="message message_left">
-                <div class="message_box">
-                  <div class="message_content">
-                    <div class="message_text">hi is todays lecture in person?</div>
-                  </div>
-                </div>
-              </div>
-              <div class="clear"></div>
-            */}
-
-            {/* My messages */}
-            {/*
-              <div class="message message_right">
-                <div class="message_box">
-                  <div class="message_content">
-                    <div class="message_text">No, it will be hosted on Zoom.</div>
-                  </div>
-                </div>
-              </div>
-              <div class="clear"></div>
-            
-             </div>
-            */}
 
             {/* Text box */}
             <div id="send">
-              <textarea id="textarea" placeholder="Message..."></textarea>
+              <input type="text" id="textarea" placeholder="Message..."></input>
 
               
               <div class="formatting-bar">
@@ -205,7 +181,7 @@ const Discussion =() =>{
                 <button class="btn" onClick={() => formatText('underline')}>U</button>
                 <button class="btn" onClick={() => formatText('strikethrough')}>S</button>
                 <img class="btn" src="" type="button" id="react"></img>
-                <button id="send_btn" onClick={sendMessage}><img src="../assets/send.png"></img></button>
+                <button id="send_btn" onClick={sendMessage}><i class="fa-solid fa-paper-plane"></i></button>
 
               </div>
 
