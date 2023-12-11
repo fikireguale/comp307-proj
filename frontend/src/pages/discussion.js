@@ -6,10 +6,6 @@ const Discussion =() =>{
 
   const navigate = useNavigate();
 
-  const goToUserManagement = () => {
-    navigate('/userManagement');
-  };
-
   // sample user data with icons
   const users = [
     { name: "User 1", icon: '../assets/user1.png'},
@@ -105,7 +101,7 @@ const Discussion =() =>{
   return (
       <div className="discussion">
         <div class="flexbox">
-          <button onClick={goToUserManagement}>Manage Users</button>
+          
           <section class="left_column">
             <img class="home_icon" src="../assets/home_icon.png"></img>
           </section>
