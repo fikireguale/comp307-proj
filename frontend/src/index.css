@@ -449,7 +449,11 @@
   .discussion #messages{
     overflow: auto;
     height: 80%;
-   
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    width: 100%;
   }
   .message{
     margin:0px;
@@ -461,13 +465,13 @@
   
   /* left message */
   .message_left{
-    float: left;
+    align-self: flex-start;
     line-height: 2.5em;
   }
   
   /* right message */
   .message_right{
-    float:right;
+    align-self: flex-end;
     line-height: 2.5em;
   }
   
