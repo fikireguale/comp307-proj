@@ -19,8 +19,6 @@ const Discussion =() =>{
   const chatName = useParams().discussionName;
   const username = useParams().username;
 
- 
-
   // function to generate current timestamp
   function getCurrentTime(){
     const now = new Date();
@@ -78,46 +76,6 @@ const Discussion =() =>{
       console.error("Error", e);
     }
 
- 
-
-    /*
-
-    const user = users[0];
-    const time = getCurrentTime();
-
-    const discussionBoard = document.getElementById("message_right");
-    const newMessage = document.createElement('div');
-    newMessage.classList.add('message');
-
-    const userInfo = document.createElement('div');
-    userInfo.classList.add('user-info');
-
-    const userIcon = document.createElement('img');
-    userIcon.src = user.icon;
-    userIcon.alt = "${user.name}'s icon";
-    userIcon.classList.add("user-icon");
-
-    const userName = document.createElement('span');
-    userName.textContent = "${user.name}";
-
-    const timestamp = document.createElement('span');
-    timestamp.textContent = time;
-    timestamp.classList.add("timestamp");
-
-    const messageContent = document.createElement('p');
-    messageContent.textContent = message;
-
-    userInfo.appendChild(userIcon);
-    userInfo.appendChild(userName);
-    userInfo.append(timestamp);
-
-    newMessage.appendChild(userInfo);
-    newMessage.appendChild(messageContent);
-    discussionBoard.appendChild(newMessage);
-
-    messageInput.value = "";
-    discussionBoard.scrollTop = discussionBoard.scrollHeight;
-    */
   }
   //if not empty then change the color to white 
   const inputTextStyle = searchTerm ? {color:'white'} : {};
