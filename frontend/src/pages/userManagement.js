@@ -2,14 +2,15 @@ import React, { useState } from 'react';
 
 const UserManagement = () => {
   const [users, setUsers] = useState([
-    { name: "User 1", icon: '../assets/user1.png' },
-    { name: "User 2", icon: '../assets/user2.png' }
+    { name: "User 1" },
+    { name: "User 2"}
   ]);
   const [newUserName, setNewUserName] = useState('');
 
   const addUser = () => {
+    //chack whether the user exists before
     if (newUserName) {
-      setUsers([...users, { name: newUserName, icon: '../assets/default.png' }]);
+      setUsers([...users, { name: newUserName }]);
       setNewUserName('');
     }
   };
@@ -21,23 +22,24 @@ const UserManagement = () => {
   return (
     <div className='userManagement'>
       <h1>User Management</h1>
-      <div>
-        {users.map((user, index) => (
-          <div key={index}>
-            <span>{user.name}</span>
-            <button onClick={() => deleteUser(user.name)}>Delete</button>
-          </div>
-        ))}
-      </div>
-      <div>
+      <div className='inputNewUser'>
         <input 
           type="text" 
           value={newUserName}
           onChange={(e) => setNewUserName(e.target.value)}
-          placeholder="Enter new user name" 
+          placeholder="Enter username" 
         />
         <button onClick={addUser}>Add User</button>
       </div>
+      <div className='deleteUser'>
+        {users.map((user, index) => (
+          <div key={index}>
+            <span className='user'>{user.name}</span>
+            <button onClick={() => deleteUser(user.name)}>Delete</button>
+          </div>
+        ))}
+      </div>
+      
     </div>
   );
 };
