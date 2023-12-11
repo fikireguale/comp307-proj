@@ -277,8 +277,8 @@
 
 .signIn .circle1{
   z-index: 1;
-  width: 450px;
-  height:450px;
+  width: 500px;
+  height:500px;
   border-radius: 50%; /*make it round*/
   border: 1.5px solid #ba9699; 
   background-color: transparent;
@@ -289,8 +289,8 @@
 }
 .signIn .circle2{
   z-index: 1;
-  width: 450px;
-  height:450px;
+  width: 500px;
+  height:500px;
   border-radius: 50%; /*make it round*/
   border: 1.5px solid #EADBC8; 
   background-color: transparent;
@@ -301,8 +301,8 @@
 }
 .signIn .circle3{
   z-index: 1;
-  width: 450px;
-  height:450px;
+  width: 500px;
+  height:500px;
   border-radius: 50%; /*make it round*/
   border: 1.5px solid #c46c4c; 
   background-color: transparent;
@@ -314,8 +314,8 @@
 
 .signIn .circle4{
   z-index: 1;
-  width: 450px;
-  height:450px;
+  width: 500px;
+  height:500px;
   border-radius: 50%; /*make it round*/
   border: 1.5px solid #fea789; 
   background-color: transparent;
@@ -327,8 +327,8 @@
 
 .signIn .circle5{
   z-index: 1;
-  width: 450px;
-  height:450px;
+  width: 500px;
+  height:500px;
   border-radius: 50%; /*make it round*/
   border: 1.5px solid #FFC5C5; 
   background-color: transparent;
