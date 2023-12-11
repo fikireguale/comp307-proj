@@ -104,7 +104,6 @@ const Discussion =() =>{
 
             <header class="course_name">
               <h1>Comp 307</h1>
-              
               <button class="manageMember_btn" onClick={toUserManagement}>Manage Users</button>
             </header>
             <div class="search">
