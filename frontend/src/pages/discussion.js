@@ -2,15 +2,11 @@
 import React, {useState, useMemo, useEffect} from 'react';
 import axios from 'axios';
 import { useParams, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const Discussion =() =>{
 
   const navigate = useNavigate(); //navigate function
-
-
-    const toUserManagement = () => {
-        navigate('/userManagement');
-    };
   // sample user data with icons
   const users = [
     { name: "User 1", icon: '../assets/user1.png'},
@@ -18,6 +14,10 @@ const Discussion =() =>{
   ];
   const chatName = useParams().discussionName;
   const username = useParams().username;
+  const toUserManagement = () => {
+    navigate(`/userManagement/${username}`);
+    //navigate('/userManagement');
+  };
 
   // function to generate current timestamp
   function getCurrentTime(){
@@ -104,6 +104,7 @@ const Discussion =() =>{
 
             <header class="course_name">
               <h1>Comp 307</h1>
+              
               <button class="manageMember_btn" onClick={toUserManagement}>Manage Users</button>
             </header>
             <div class="search">
