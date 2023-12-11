@@ -22,6 +22,10 @@ const messageSchema = mongoose.Schema(
     createdAt: {
       type: Date,
       default: Date.now
+    },
+
+    sendername: {
+      type: String
     }
 
   }
