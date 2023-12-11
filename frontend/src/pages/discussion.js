@@ -5,13 +5,21 @@ import { useParams, useNavigate } from 'react-router-dom';
 
 
 const Discussion =() =>{
+  
   const chatName = useParams().discussionName;
   const username = useParams().username;
+  console.log(useParams());
 
   const navigate = useNavigate(); //navigate function
+  
 
   const toSelectDiscussion = () => {
     navigate(`/select_discussion/${username}`);
+  };
+
+  const toUserManagement = () => {
+    navigate(`/userManagement/${username}`);
+    //navigate('/userManagement');
   };
 
   // sample user data with icons
@@ -19,11 +27,6 @@ const Discussion =() =>{
     { name: "User 1", icon: '../assets/user1.png'},
     { name: "User 2", icon: '../assets/user2.png'}
   ];
-  
-  const toUserManagement = () => {
-    navigate(`/userManagement/${username}`);
-    //navigate('/userManagement');
-  };
 
 
   // function to generate current timestamp
@@ -34,12 +37,32 @@ const Discussion =() =>{
 
   
   // Chat log
+  const [messageLog, setMessageLog] = useState([]);
+  useEffect(() => {
+    const fetchData = async () => {
+      const data = {};
+      const config = {
+        headers: {
+          "Content-type": "application/json",
+        },
+      };
+      try {
+        const response = await axios.get(`/message/get_messages?chatName=${chatName}&user=${username}`, data, config);
+        if (response.status === 200) {
+          setMessageLog(response.data.allMessages);
+        } else {
+          console.error('Failed to fetch chat logs');
+        }
+      } catch (error) {
+        console.error('Error fetching chat logs:', error);
+      }
+    };
 
-  // State to hold messages
-  const [messages, setMessages] = useState([
-    { id: 1, user: "User 2", text: "hi is todays lecture in person?", time: getCurrentTime() },
-    { id: 2, user: "User 1", text: "No, it will be hosted on Zoom.", time: getCurrentTime() }
-  ]);
+    fetchData();
+  }, []);
+  console.log(messageLog);
+
+ 
 
   // State to hold the search term
   const [searchTerm, setSearchTerm] = useState("");
@@ -55,7 +78,7 @@ const Discussion =() =>{
     const message = messageInput.value;
     if (message.trim() == '') return;
 
-    const user = users[0];
+    const user = username;
     const time = getCurrentTime();
 
     const data = {
@@ -71,7 +94,7 @@ const Discussion =() =>{
     };
 
     // Update messages state instead of manipulating the DOM directly
-    setMessages([...messages, { id: messages.length + 1, user: user.name, text: message, time: time }]);
+    setMessageLog([...messageLog, { id: messageLog.length + 1, username: user, content: message, createdAt: time }]);
 
     messageInput.value = "";
 
@@ -98,9 +121,10 @@ const Discussion =() =>{
   }
 
    // Filter messages based on the search term
-   const filteredMessages = messages.filter((message) =>
-   message.text.toLowerCase().includes(searchTerm.toLowerCase())
+   const filteredMessages = messageLog.filter((message) =>
+   message.content.toLowerCase().includes(searchTerm.toLowerCase())
   );
+
   
 
   return (
@@ -131,15 +155,18 @@ const Discussion =() =>{
 
 
             <div id="messages">
+
               {/* Filter and map through messages for display */}
               {filteredMessages.map((message) => (
-                <div key={message.id} className={`message message_${message.user === users[0].name ? "right" : "left"}`}>
+                <div key={message.id} className={`message message_${message.sender === users[0].name ? "right" : "left"}`}>
                   <div className="message_box">
-                    <div className="message_text">{message.text}</div>
+                    <div className="message_text">{message.content}</div>
                     {/* Add timestamp and user icon if needed */}
                   </div>
                 </div>
               ))}
+              
+              
             </div>
 
             
