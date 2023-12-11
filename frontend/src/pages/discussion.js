@@ -1,4 +1,6 @@
 import React , {useState} from "react";
+import axios from 'axios';
+import { useParams } from 'react-router-dom';
 
 const Discussion =() =>{
 
@@ -7,6 +9,8 @@ const Discussion =() =>{
     { name: "User 1", icon: '../assets/user1.png'},
     { name: "User 2", icon: '../assets/user2.png'}
   ];
+  const chatName = useParams().discussionName;
+  const username = useParams().username;
 
   // function to generate current timestamp
   function getCurrentTime(){
@@ -23,7 +27,11 @@ const Discussion =() =>{
   // State to hold the search term
   const [searchTerm, setSearchTerm] = useState("");
 
-  
+  function formatText(option){
+    // option can be "bold", "italic", "underline", "strike"
+  }
+
+
   // function to create and display messages
   function sendMessage(){
     const messageInput = document.getElementById("textarea");
@@ -33,10 +41,30 @@ const Discussion =() =>{
     const user = users[0];
     const time = getCurrentTime();
 
+    const data = {
+      "chatName": chatName,
+      "username": username,
+      "content": message,
+      "pin": false,
+    };
+    const config = {
+      headers: {
+        "Content-type": "application/json",
+      },
+    };
+
     // Update messages state instead of manipulating the DOM directly
     setMessages([...messages, { id: messages.length + 1, user: user.name, text: message, time: time }]);
 
     messageInput.value = "";
+
+    try{
+      // send the new message data to DB
+      axios.post("/message/send_message/", data, config);
+
+    } catch (e) {
+      console.error("Error", e);
+    }
   
 
     /*
@@ -89,9 +117,7 @@ const Discussion =() =>{
    // Filter messages based on the search term
    const filteredMessages = messages.filter((message) =>
    message.text.toLowerCase().includes(searchTerm.toLowerCase())
- );
-
-
+  );
   
 
   return (
@@ -174,12 +200,12 @@ const Discussion =() =>{
 
               
               <div class="formatting-bar">
-                <button class="btn" onclick="formatText('bold')">B</button>
-                <button class="btn" onclick="formatText('italic')">I</button>
-                <button class="btn" onclick="formatText('underline')">U</button>
-                <button class="btn" onclick="formatText('strikethrough')">S</button>
+                <button class="btn" onClick={() => formatText('bold')}>B</button>
+                <button class="btn" onClick={() => formatText('italic')}>I</button>
+                <button class="btn" onClick={() => formatText('underline')}>U</button>
+                <button class="btn" onClick={() => formatText('strikethrough')}>S</button>
                 <img class="btn" src="" type="button" id="react"></img>
-                <button id="send_btn" onclick="sendMessage()"><img src="../assets/send.png"></img></button>
+                <button id="send_btn" onClick={sendMessage}><img src="../assets/send.png"></img></button>
 
               </div>
 
