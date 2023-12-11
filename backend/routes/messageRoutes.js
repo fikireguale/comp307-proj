@@ -8,7 +8,7 @@ const Message = require('../models/messageModel')
 
 router.post('/send_message', async (req, res) => {
     try{
-        const { chatName, username, content } = req.body;
+        const { chatName, username, content, pin } = req.body;
 
         const user = await User.findOne({ username: username });
         const chat = await Chat.findOne({ name: chatName });
@@ -28,13 +28,21 @@ router.post('/send_message', async (req, res) => {
 
             await msg.save();
 
-            // Update chat with the new message
-            const updatedChat = await Chat.findByIdAndUpdate(
-                chat._id,
-                { $push: { messages: msg._id } },
-                { new: true }
-            );
-            
+            if (!pin) {
+                // Update chat with the new message
+                const updatedChat = await Chat.findByIdAndUpdate(
+                    chat._id,
+                    { $push: { messages: msg._id } },
+                    { new: true }
+                );
+            } else {
+                // Update chat with the new message
+                const updatedChat = await Chat.findByIdAndUpdate(
+                    chat._id,
+                    { $push: { pins: msg._id } },
+                    { new: true }
+                );
+            }
         }
 
         res.status(201).json(); 
@@ -44,5 +52,78 @@ router.post('/send_message', async (req, res) => {
         res.status(500).json({ error: 'Internal Server Error' });
     }
 })
+
+
+router.get('/get_messages', async (req, res) => {
+    try{
+        const { chatName, user } = req.query;
+
+        const userInfo = await User.findOne({ username: user });
+        const chatInfo = await Chat.findOne({ name: chatName });
+
+        if (!userInfo) {
+            return res.status(400).json({ error: 'Invalid user' })
+        }
+        
+        const allMessages = chatInfo.messages;
+        console.log(allMessages)
+        res.status(200).json({ allMessages });
+
+    } catch (error) {
+        console.error('Error sending message', error);
+        res.status(500).json({ error: 'Internal Server Error' });
+    }
+})
+
+router.get('/get_pins', async (req, res) => {
+    try{
+        const { chatName, user } = req.query;
+
+        const userInfo = await User.findOne({ username: user });
+        chatInfo = await Chat.findOne({ name: chatName });
+
+        if (!userInfo) {
+            return res.status(400).json({ error: 'Invalid user' });
+        }
+        
+        const allMessages = chatInfo.pins;
+        console.log(allMessages);
+        res.status(200).json({ allMessages });
+
+    } catch (error) {
+        console.error('Error sending message', error);
+        res.status(500).json({ error: 'Internal Server Error' });
+    }
+})
+
+router.post('/un_pin', async (req, res) => {
+    try{
+        const { chatName, user, messageID } = req.body;
+
+        const userInfo = await User.findOne({ username: user });
+        const chatInfo = await Chat.findOne({ name: chatName });
+        const pinnedMessage = chatInfo.pins.find(message => message._id.toString() === messageID);
+
+        if (!userInfo) {
+            return res.status(400).json({ error: 'Invalid user' });
+        }
+
+        if (pinnedMessage) {
+            const updatedChat = await Chat.findByIdAndUpdate(
+                chatInfo._id,
+                { $pull: { pins: pinnedMessage._id } },
+                { new: true }
+            );
+        }
+
+        res.status(200).json();
+
+    } catch (error) {
+        console.error('Error sending message', error);
+        res.status(500).json({ error: 'Internal Server Error' });
+    }
+})
+
+
 
 module.exports = router

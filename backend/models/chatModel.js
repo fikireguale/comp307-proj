@@ -11,7 +11,7 @@ const chatSchema = mongoose.Schema(
     admin: { 
       type: mongoose.Schema.Types.ObjectId, 
       ref: "User",
-      required: true, 
+      required: true
     },
 
     users: [{ 
@@ -24,14 +24,14 @@ const chatSchema = mongoose.Schema(
       default: 'https://static-00.iconduck.com/assets.00/chat-icon-2048x2048-i7er18st.png'
     },
 
-    messages: {
+    messages: [{
       type: mongoose.Schema.Types.ObjectId,
       ref: "Message"
-    },
+    }],
 
     pins:[{
       type: mongoose.Schema.Types.ObjectId,
-      ref: "User",
+      ref: "User"
     }]
   }
 );
