@@ -42,7 +42,7 @@ const UserManagement = () => {
   
     try {
       // Check if user exists in the database
-      const checkUserResponse = await axios.get('/user/check_user', { params: { username: newUserName } });
+      const checkUserResponse = await axios.get('/chat/check_user', { params: { username: newUserName } });
       if (!checkUserResponse.data.exists) {
         alert('User does not exist!');
         return;
