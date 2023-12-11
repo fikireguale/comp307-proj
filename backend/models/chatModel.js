@@ -10,13 +10,13 @@ const chatSchema = mongoose.Schema(
 
     admin: { 
       type: mongoose.Schema.Types.ObjectId, 
-      ref: "User",
+      ref: "user",
       required: true
     },
 
     users: [{ 
         type: mongoose.Schema.Types.ObjectId, 
-        ref: "User" 
+        ref: "user" 
     }],
 
     image: {
@@ -31,7 +31,7 @@ const chatSchema = mongoose.Schema(
 
     pins:[{
       type: mongoose.Schema.Types.ObjectId,
-      ref: "User"
+      ref: "user"
     }]
   }
 );

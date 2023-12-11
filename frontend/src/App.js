@@ -5,7 +5,7 @@ import Landing from './pages/landing';
 import Registration from './pages/Registration';
 import SignIn from './pages/signIn';
 import Select_Discussion from './pages/select_discussion';
-
+import UserManagement from './pages/userManagement';
 
 import React, { useEffect } from 'react';
 
@@ -21,7 +21,7 @@ function App() {
     <>
     <Helmet>
       <title>Perch</title>
-      {/* You can also add common meta tags, links here */}
+      
     </Helmet>
    
     
@@ -34,6 +34,7 @@ function App() {
         <Route path='/signIn' element={<SignIn/>}/>
         <Route path='/discussion/:username/:discussionName' element={<Discussion/>}/>
         <Route path='/select_discussion/:username' element={<Select_Discussion/>}/>
+        <Route path='/userManagement' element={<UserManagement />} />
           
       </Routes>
     </Router>

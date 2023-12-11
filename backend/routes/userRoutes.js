@@ -2,7 +2,7 @@ const express = require('express')
 const router = express.Router()
 const user = require('../models/userModel')
 const bcrypt = require('bcrypt');
-const chat = require('../models/chatModel');
+const Chat = require('../models/chatModel');
 
 // GET all users
 router.get('/', (req, res) => {
@@ -93,8 +93,9 @@ router.post('/register', async (req, res) =>{
       
           // Find the user by username
           const regex = new RegExp(username, 'i');
+          const regex2 = new RegExp(chatName, 'i');
           const userInfo = await user.findOne({ username: { $regex: regex } });
-          const chatInfo = await chat.findOne({ name: chatName });
+          const chatInfo = await Chat.findOne({ name: { $regex: regex2 } });
 
           if (userInfo){
 
@@ -117,6 +118,12 @@ router.post('/register', async (req, res) =>{
               userInfo.userChats.push(chatInfo._id);
               // Save the updated user document
               const savedUser = await userInfo.save();
+              await Chat.findByIdAndUpdate(
+                chatInfo._id,
+                { $push: { users: savedUser.id } },
+                { new: true }
+            );
+    
               res.status(200).json(savedUser);
                 
             
@@ -175,8 +182,9 @@ router.post('/register', async (req, res) =>{
       
           // Find the user by username
           const regex = new RegExp(username, 'i');
+          const regex2 = new RegExp(chatName, 'i');
           const userInfo = await user.findOne({ username: { $regex: regex } });
-          const chatInfo = await chat.findOne({ name: chatName });
+          const chatInfo = await Chat.findOne({ name: { $regex: regex2 } });
 
           if (userInfo){
 
@@ -189,6 +197,8 @@ router.post('/register', async (req, res) =>{
               try {
                 await userInfo.updateOne({ $pull: { userChats: chatInfo._id } });
                 const savedUser = await userInfo.save();
+                await chatInfo.updateOne({ $pull: { users: userInfo._id } });
+                const savedChat = await chatInfo.save();
                 console.log("deleted")
                 res.status(201).json(savedUser);
               } catch (updateErr) {
