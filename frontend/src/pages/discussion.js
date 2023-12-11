@@ -7,7 +7,7 @@ const Discussion =() =>{
   const navigate = useNavigate();
 
   const goToUserManagement = () => {
-    navigate('/user-management');
+    navigate('/userManagement');
   };
 
   // sample user data with icons

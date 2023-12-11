@@ -34,7 +34,7 @@ function App() {
         <Route path='/signIn' element={<SignIn/>}/>
         <Route path='/discussion/:username/:discussionName' element={<Discussion/>}/>
         <Route path='/select_discussion/:username' element={<Select_Discussion/>}/>
-        <Route path='/user-management' element={<UserManagement />} />
+        <Route path='/userManagement' element={<UserManagement />} />
           
       </Routes>
     </Router>
