@@ -94,7 +94,7 @@ const Discussion =() =>{
     };
 
     // Update messages state instead of manipulating the DOM directly
-    setMessageLog([...messageLog, { id: messageLog.length + 1, username: user, content: message, createdAt: time }]);
+    setMessageLog([...messageLog, { id: messageLog.length + 1, sendername: user, content: message, createdAt: time }]);
 
     messageInput.value = "";
 
@@ -124,6 +124,7 @@ const Discussion =() =>{
    const filteredMessages = messageLog.filter((message) =>
    message.content.toLowerCase().includes(searchTerm.toLowerCase())
   );
+  
 
   
 
@@ -139,7 +140,7 @@ const Discussion =() =>{
           <section class="channel_selection">
 
             <header class="course_name">
-              <h1>Comp 307</h1>
+              <h1>{chatName}</h1>
               <button class="manageMember_btn" onClick={toUserManagement}>Manage Users</button>
             </header>
             <div class="search">
@@ -158,9 +159,10 @@ const Discussion =() =>{
 
               {/* Filter and map through messages for display */}
               {filteredMessages.map((message) => (
-                <div key={message.id} className={`message message_${message.sender === users[0].name ? "right" : "left"}`}>
+                <div key={message.id} className={`message message_${message.sendername === username ? "right" : "left"}`}>
                   <div className="message_box">
                     <div className="message_text">{message.content}</div>
+                    <div className="time_stamp">{message.createdAt}</div>
                     {/* Add timestamp and user icon if needed */}
                   </div>
                 </div>

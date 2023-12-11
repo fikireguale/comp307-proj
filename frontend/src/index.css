@@ -466,15 +466,20 @@
   /* left message */
   .message_left{
     align-self: flex-start;
+    padding-right: 100px;
     line-height: 2.5em;
   }
   
   /* right message */
   .message_right{
+    padding-left: 100px;
     align-self: flex-end;
     line-height: 2.5em;
   }
-  
+  .time_stamp{
+    font-size: x-small;
+    color: grey;
+  }
   .clear{
     clear: both;
   }
