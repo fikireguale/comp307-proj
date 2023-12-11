@@ -94,6 +94,31 @@ router.post('/delete_chat', async (req, res) => {
     }
 })
 
+router.get('/get_discussion_users', async (req, res) => {
+    /*
+        data = {"name": "COMP307"}
+        axios.get("/chat/get_discussion_users", data, config);
+        returns: user's infos
+    */
+    try {
+      const { name } = req.query;
+      const regex = new RegExp(name, 'i');
+      console.log("before request")
+      const chatInfo = await Chat.findOne({ name: { $regex: regex } }).populate('users');
+        console.log(chatInfo)
+      if (chatInfo) {
+        const chat_users = chatInfo.users;
+        console.log(chat_users)
+        res.status(200).json({ chat_users });
+      } else {
+        res.status(404).json({ error: 'Chat not found' });
+      }
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ error: 'Internal Server Error' });
+    }
+  });
+
 
 
 module.exports = router
