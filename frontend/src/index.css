@@ -476,6 +476,10 @@
     align-self: flex-end;
     line-height: 2.5em;
   }
+  .message_text a{
+    color: grey;
+    font-weight: bold;
+  }
   .time_stamp{
     font-size: x-small;
     color: grey;
