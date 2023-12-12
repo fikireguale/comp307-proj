@@ -66,7 +66,7 @@ const Discussion =() =>{
 
 
   // function to create and display messages
-  function sendMessage(){
+  function sendMessage(pinned){
     const messageInput = document.getElementById("textarea");
     const message = messageInput.value;
     if (message.trim() == '') return;
@@ -78,7 +78,7 @@ const Discussion =() =>{
       "chatName": chatName,
       "username": username,
       "content": message,
-      "pin": false,
+      "pin": pinned,
     };
     const config = {
       headers: {
@@ -239,8 +239,12 @@ const Discussion =() =>{
                 <button class="btn" onClick={() => formatText('underline')}>U</button>
                 <button class="btn" onClick={() => formatText('strikethrough')}>S</button>
                 <img class="btn" src="" type="button" id="react"></img>
-                <button id="pin_send_btn" onClick={sendWithPin}><i class="fa-solid fa-thumbtack"></i></button>
-                <button id="send_btn" onClick={sendMessage}><i class="fa-solid fa-paper-plane"></i></button>
+                <button id="pin_send_btn" onClick={() => sendMessage(true)}>
+  <i class="fa-solid fa-thumbtack"></i>
+</button>
+<button id="send_btn" onClick={() => sendMessage(false)}>
+  <i class="fa-solid fa-paper-plane"></i>
+</button>
 
               </div>
 

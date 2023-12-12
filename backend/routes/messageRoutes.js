@@ -34,21 +34,22 @@ router.post('/send_message', async (req, res) => {
 
             await msg.save();
 
-            if (!pin) {
-                // Update chat with the new message
-                const updatedChat = await Chat.findByIdAndUpdate(
-                    chat._id,
-                    { $push: { messages: msg._id } },
-                    { new: true }
-                );
-            } else {
-                // Update chat with the new message
-                const updatedChat = await Chat.findByIdAndUpdate(
-                    chat._id,
-                    { $push: { pins: msg._id } },
-                    { new: true }
-                );
+            if (pin) {
+                                // Update chat with the new message
+                                const updatedChat2 = await Chat.findByIdAndUpdate(
+                                    chat._id,
+                                    { $push: { pins: msg._id } },
+                                    { new: true }
+                                );
+
             }
+                            // Update chat with the new message
+                            const updatedChat = await Chat.findByIdAndUpdate(
+                                chat._id,
+                                { $push: { messages: msg._id } },
+                                { new: true }
+                            );
+
         }
 
         res.status(201).json(); 
