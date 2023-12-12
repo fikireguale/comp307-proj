@@ -480,6 +480,12 @@
     color: grey;
     font-weight: bold;
   }
+  
+  .message_text a{
+    color: grey;
+    font-weight: bold;
+  }
+
   .time_stamp{
     font-size: x-small;
     color: grey;
