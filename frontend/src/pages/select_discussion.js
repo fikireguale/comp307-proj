@@ -93,6 +93,7 @@ const Select_Discussion =() => {
         const response3 = await axios.post("/chat/create_chat/", data3, config2);
         console.log("R3", response3)
         setEditModalIsOpen(false);
+        setNewChatName('');
       } catch (e) {
         console.log("Error", e.stack);
         console.log("Error", e.name);
@@ -114,6 +115,7 @@ const Select_Discussion =() => {
         const response4 = await axios.post("/user/add_user_chat/", data4, config3);
         console.log("R4", response4)
         setEditModalIsOpen(false);
+        setNewChatName('');
       } catch (e) {
         console.log("Error", e.stack);
         console.log("Error", e.name);
