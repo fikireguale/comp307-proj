@@ -70,13 +70,13 @@ router.get('/get_messages', async (req, res) => {
         const { chatName, user } = req.query;
 
         const userInfo = await User.findOne({ username: user });
-        const chatInfo = await Chat.findOne({ name: chatName }).populate("messages");
+        const chatInfo = await Chat.findOne({ name: chatName }).populate('messages');;
 
         if (!userInfo) {
             return res.status(400).json({ error: 'Invalid user' })
         }
         
-        const allMessages = chatInfo.messages;
+        //const allMessages = chatInfo.populate('messages');
         console.log(allMessages)
         res.status(200).json({ allMessages });
 

@@ -16,9 +16,11 @@ router.post('/create_chat', async (req, res) => {
 
     try{
         const { chatName, adminName } = req.body;
+        const regex = new RegExp(adminName, 'i');
+        const adminUser = await User.findOne({ username: { $regex: regex } });
 
-        const adminUser = await User.findOne({ username: adminName });
 
+        console.log("admin User", adminUser)
         const savedChat = await Chat.create({ name: chatName, admin: adminUser._id });
         // add chat to admin's userChats
         const updatedUser = await User.findByIdAndUpdate(

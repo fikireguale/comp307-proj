@@ -155,7 +155,7 @@ router.post('/register', async (req, res) =>{
         try {
           const { username } = req.query;
           const regex = new RegExp(username, 'i');
-          const userInfo = await user.findOne({ username: { $regex: regex } }).populate('userChats');; 
+          const userInfo = await user.findOne({ username: { $regex: regex } }).populate('userChats'); 
 
           if (userInfo) {
             const chats = userInfo.userChats;
