@@ -109,13 +109,39 @@ const Discussion =() =>{
 
   }
 
-  const pinMessage = (messageId) => {
-    const messageToPin = messageLog.find(msg => msg.id === messageId);
-    if (!messageToPin) return;
 
-    // Update the pin status in the local state
-    setPinnedMessage(messageToPin);
-    axios.post('/message/get_pins', { messageId });
+  useEffect(() => {
+    const fetchPinnedMessages = async () => {
+      const config = {
+        headers: {
+          "Content-type": "application/json",
+        },
+      };
+
+      try {
+        const response = await axios.get(`/message/get_pins?chatName=Comp307&user=John`, config);
+        if (response.status === 200) {
+          setPinnedMessage(response.data); // Adjust this according to your data structure
+        }
+      } catch (error) {
+        console.error('Error fetching pinned messages:', error);
+      }
+    };
+
+    fetchPinnedMessages();
+  }, []);
+
+
+  const pinMessage = async (messageId) => {
+    try {
+      const response = await axios.post('/message/get_pins', { messageId });
+      if (response.status === 200) {
+        // Update pinned message in state, adjust according to your needs
+        setPinnedMessage(response.data);
+      }
+    } catch (error) {
+      console.error('Error pinning message:', error);
+    }
   };
 
   //function pinMessage(){
@@ -161,7 +187,7 @@ const Discussion =() =>{
           <section class="discussion_board">
             <header class="channel_name">
               <h1>Channel 1</h1>
-              <button id="pin_btn" onClick={pinMessage(message.id)}><i class="fa-solid fa-thumbtack"></i></button>
+              {/*<button id="pin_btn" onClick={pinMessage(message.id)}><i class="fa-solid fa-thumbtack"></i></button>*/}
               
             </header>
 
@@ -177,6 +203,7 @@ const Discussion =() =>{
                   <div className="message_box">
                     <div className="message_text"><a>{message.sendername}:</a> {message.content}</div>
                     <div className="time_stamp">{message.createdAt}</div>
+                    <button id="pin_btn" onClick={pinMessage(message.id)}><i class="fa-solid fa-thumbtack"></i></button>
                     
                   </div>
                 </div>
