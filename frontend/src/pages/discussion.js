@@ -6,6 +6,25 @@ import { useParams, useNavigate } from 'react-router-dom';
 
 const Discussion =() =>{
   const [pinnedMessage, setPinnedMessage] = useState(null);
+
+  const [showPopup, setShowPopup] = useState(false); 
+
+
+
+  const togglePopup = () => {
+    setShowPopup(!showPopup);
+  };
+
+  // Popup component
+  const PinnedMessagesPopup = () => (
+    <div className="popup">
+      <div className="popup-inner">
+        <h2>Pinned Messages</h2>
+        {pinnedMessage && <p>{pinnedMessage.content}</p>}
+        <button onClick={togglePopup}>Close</button>
+      </div>
+    </div>
+  );
   
   const chatName = useParams().discussionName;
   const username = useParams().username;
@@ -203,8 +222,8 @@ const Discussion =() =>{
                   <div className="message_box">
                     <div className="message_text"><a>{message.sendername}:</a> {message.content}</div>
                     <div className="time_stamp">{message.createdAt}</div>
-                    <button id="pin_btn" onClick={pinMessage(message.id)}><i class="fa-solid fa-thumbtack"></i></button>
-                    
+                    {/*<button id="pin_btn" onClick={pinMessage(message.id)}><i class="fa-solid fa-thumbtack"></i></button>*/}
+                    <button id="send_btn" onClick={togglePopup}><i class="fa-solid fa-paper-plane"></i></button>
                   </div>
                 </div>
               ))}
@@ -223,7 +242,7 @@ const Discussion =() =>{
                 <button class="btn" onClick={() => formatText('underline')}>U</button>
                 <button class="btn" onClick={() => formatText('strikethrough')}>S</button>
                 <img class="btn" src="" type="button" id="react"></img>
-                <button id="send_btn" onClick={sendMessage}><i class="fa-solid fa-paper-plane"></i></button>
+                
 
               </div>
 
