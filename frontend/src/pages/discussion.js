@@ -22,13 +22,6 @@ const Discussion =() =>{
     //navigate('/userManagement');
   };
 
-  // sample user data with icons
-  const users = [
-    { name: "User 1", icon: '../assets/user1.png'},
-    { name: "User 2", icon: '../assets/user2.png'}
-  ];
-
-
   // function to generate current timestamp
   function getCurrentTime(){
     const now = new Date();
@@ -73,7 +66,7 @@ const Discussion =() =>{
 
 
   // function to create and display messages
-  function sendMessage(){
+  function sendMessage(pinned){
     const messageInput = document.getElementById("textarea");
     const message = messageInput.value;
     if (message.trim() == '') return;
@@ -85,7 +78,7 @@ const Discussion =() =>{
       "chatName": chatName,
       "username": username,
       "content": message,
-      "pin": false,
+      "pin": pinned,
     };
     const config = {
       headers: {
@@ -109,9 +102,67 @@ const Discussion =() =>{
   }
 
 
-  function pinMessage(){
-    // do something to pin message
+  const [pinnedMessages, setPinnedMessages] = useState(false);
+  
+  function sendWithPin(){
+    const messageInput = document.getElementById("textarea");
+    const message = messageInput.value;
+    if (message.trim() == '') return;
+
+    const user = username;
+    const time = getCurrentTime();
+
+    const data = {
+      "chatName": chatName,
+      "username": username,
+      "content": message,
+      "pin": true,
+    };
+    const config = {
+      headers: {
+        "Content-type": "application/json",
+      },
+    };
+
+    // Update messages state instead of manipulating the DOM directly
+    setMessageLog([...messageLog, { id: messageLog.length + 1, sendername: user, content: message, createdAt: time }]);
+
+    messageInput.value = "";
+
+    try{
+      // send the new message data to DB
+      axios.post("/message/send_message/", data, config);
+      setPinnedMessages([...pinnedMessages, { id: messageLog.length + 1, sendername: user, content: message, createdAt: time }])
+
+    } catch (e) {
+      console.error("Error", e);
+    }
+    
+
+
+
+    
   }
+
+  const showPinMessages = () => {
+    // do something
+    setPinnedMessages(!pinnedMessages);
+    const data = {};
+    const config = {
+      headers: {
+        "Content-type": "application/json",
+      },
+    };
+
+    try{
+      const response = axios.get(`/message/get_pins?chatName=${chatName}&user=${username}`, data, config);
+      console.log(response);
+    } catch(e){
+      console.error("Error", e);
+    }
+
+  };
+  
   //if not empty then change the color to white 
   const inputTextStyle = searchTerm ? {color:'white'} : {};
 
@@ -124,6 +175,8 @@ const Discussion =() =>{
    const filteredMessages = messageLog.filter((message) =>
    message.content.toLowerCase().includes(searchTerm.toLowerCase())
   );
+
+ 
   
 
   
@@ -151,7 +204,7 @@ const Discussion =() =>{
           <section class="discussion_board">
             <header class="channel_name">
               <h1>Channel 1</h1>
-              <button id="pin_btn" onClick={pinMessage}><i class="fa-solid fa-thumbtack"></i></button>
+              <button id="pin_btn" onClick={showPinMessages}><i class="fa-solid fa-thumbtack"></i></button>
             </header>
 
 
@@ -180,7 +233,12 @@ const Discussion =() =>{
                 <button class="btn" onClick={() => formatText('underline')}>U</button>
                 <button class="btn" onClick={() => formatText('strikethrough')}>S</button>
                 <img class="btn" src="" type="button" id="react"></img>
-                <button id="send_btn" onClick={sendMessage}><i class="fa-solid fa-paper-plane"></i></button>
+                <button id="pin_send_btn" onClick={() => sendMessage(true)}>
+  <i class="fa-solid fa-thumbtack"></i>
+</button>
+<button id="send_btn" onClick={() => sendMessage(false)}>
+  <i class="fa-solid fa-paper-plane"></i>
+</button>
 
               </div>
 
