@@ -123,9 +123,8 @@ router.get('/get_discussion_users', async (req, res) => {
       const chatInfo = await Chat.findOne({ name: { $regex: regex } }).populate('users');
         console.log(chatInfo)
       if (chatInfo) {
-        const chat_users = chatInfo.users;
-        console.log(chat_users)
-        res.status(200).json({ chat_users });
+        console.log(chatInfo.users)
+        res.status(200).json(chatInfo.users);
       } else {
         res.status(404).json({ error: 'Chat not found' });
       }
