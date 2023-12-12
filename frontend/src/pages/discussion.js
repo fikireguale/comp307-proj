@@ -5,6 +5,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 
 
 const Discussion =() =>{
+  const [pinnedMessage, setPinnedMessage] = useState(null);
   
   const chatName = useParams().discussionName;
   const username = useParams().username;
@@ -108,10 +109,19 @@ const Discussion =() =>{
 
   }
 
+  const pinMessage = (messageId) => {
+    const messageToPin = messageLog.find(msg => msg.id === messageId);
+    if (!messageToPin) return;
 
-  function pinMessage(){
+    // Update the pin status in the local state
+    setPinnedMessage(messageToPin);
+    axios.post('/message/get_pins', { messageId });
+  };
+
+  //function pinMessage(){
+    
     // do something to pin message
-  }
+  //}
   //if not empty then change the color to white 
   const inputTextStyle = searchTerm ? {color:'white'} : {};
 
@@ -151,11 +161,17 @@ const Discussion =() =>{
           <section class="discussion_board">
             <header class="channel_name">
               <h1>Channel 1</h1>
-              <button id="pin_btn" onClick={pinMessage}><i class="fa-solid fa-thumbtack"></i></button>
+              <button id="pin_btn" onClick={pinMessage(message.id)}><i class="fa-solid fa-thumbtack"></i></button>
+              
             </header>
 
 
             <div id="messages">
+              {pinnedMessage && (
+                <div className="pinned-message">
+                  Pinned: {pinnedMessage.content}
+                </div>
+              )}
               {filteredMessages.map((message) => (
                 <div key={message.id} className={`message message_${message.sendername === username ? "right" : "left"}`}>
                   <div className="message_box">
