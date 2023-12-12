@@ -624,10 +624,19 @@
   background-color: #2b2b41;
   padding: 15px;
   margin: 5px;
+  position:relative
 }
 .select_discussion .item img{
   height: 100px;
   float: left;
+}
+.select_discussion #delete_discussion{
+  background: none;
+  border-color: grey;
+  position: absolute;
+  right: 10px;
+  top: 10px;
+
 }
 .select_discussion .fa-minus{
   float: right;
@@ -641,8 +650,12 @@
   cursor: pointer;
 }
 .select_discussion .course_text{
-  padding-left: 30px;
+  padding-left: 50px;
   background: transparent;
+}
+.select_discussion .course_text h2{
+  align-items: center;
+
 }
 
 .userManagement{

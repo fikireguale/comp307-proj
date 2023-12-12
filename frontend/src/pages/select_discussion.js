@@ -8,6 +8,7 @@ import Modal from 'react-modal';
 
 const Select_Discussion =() => {
 
+  
     const navigate = useNavigate(); //navigate function
     const toLanding = () => {
         navigate('/')
@@ -121,6 +122,28 @@ const Select_Discussion =() => {
     }
     }
 
+    const deleteDiscussion = async (event, chatName) =>{
+      event.stopPropagation();
+      
+
+      try{
+        const config4 = {
+          headers: {
+            "Content-type": "application/json",
+          },
+        };
+
+        const data5 = {"chatName": chatName, "username": `${encodeURIComponent(username)}`}
+        console.log(data5);
+        const response5 = await axios.post("/chat/delete_chat/", data5, config4);
+        console.log(response5);
+        setChats((prevChats) => prevChats.filter((chat) => chat.name != chatName));
+
+      } catch(e){
+        console.log("Error", e);
+      }
+    };
+
     const handleInputChange = (event) => {
       setNewChatName(event.target.value);
     };
@@ -182,12 +205,13 @@ const Select_Discussion =() => {
       <div className="select_board">
         {console.log("BEFORE MAP", chats)}
         {chats.map((chat) => (
-            <div className="item" key={chat.id} onClick={()=> toDiscussionBoard(chat.name)}>
+            <div id={chat.id} className="item" key={chat.id} onClick={()=> toDiscussionBoard(chat.name)}>
             <img src={chat.image} alt="Course" />
             <div className="course_text">
                 {console.log("CHATNAME:", chat.name)}
               <h2>{chat.name}</h2>
             </div>
+            <button id="delete_discussion" onClick={(event) => deleteDiscussion(event, chat.name)}><i class="fa-solid fa-minus"></i></button>
           </div>
         ))}
       </div>
