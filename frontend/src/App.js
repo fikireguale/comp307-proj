@@ -6,6 +6,7 @@ import Registration from './pages/Registration';
 import SignIn from './pages/signIn';
 import Select_Discussion from './pages/select_discussion';
 import UserManagement from './pages/userManagement';
+import PinnedMsgs from './pages/pinnedMsgs';
 
 import React, { useEffect } from 'react';
 
@@ -35,6 +36,7 @@ function App() {
         <Route path='/discussion/:username/:discussionName' element={<Discussion/>}/>
         <Route path='/select_discussion/:username' element={<Select_Discussion/>}/>
         <Route path='/userManagement/:username/:discussionName' element={<UserManagement />} />
+        <Route path='/pinned/:username/:discussionName' element={<PinnedMsgs />} />
           
       </Routes>
     </Router>
