@@ -18,22 +18,21 @@ router.post('/register', async (req, res) =>{
     returns: <nothing/success>
   */
         try {
-            // Extract data from the request body
+
             const { firstName, lastName, email, phoneNumber,
                 username, password } = req.body;
 
               console.log(username, password)
 
             const hashedPassword = await bcrypt.hash(password, 10);
-        
-            // Create a new user instance
+
             const newUser = await user.create({ firstName, lastName, email, phoneNumber,
                 username, password: hashedPassword});
         
-            // Save the user to the database
+
             const savedUser = await newUser.save();
         
-            res.status(201).json(savedUser); // Respond with the saved user
+            res.status(201).json(savedUser); 
           } catch (error) {
             console.error('Error creating user:', error);
             res.status(500).json({ error: 'Internal Server Error' });
@@ -114,9 +113,9 @@ router.post('/register', async (req, res) =>{
               }
       
               console.log('DNE, add');
-              // Add the chat to the user's userChats array
+
               userInfo.userChats.push(chatInfo._id);
-              // Save the updated user document
+
               const savedUser = await userInfo.save();
               await Chat.findByIdAndUpdate(
                 chatInfo._id,
