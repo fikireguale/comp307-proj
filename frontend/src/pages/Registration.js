@@ -43,9 +43,7 @@ const Registration = () =>{
 
    const handleSubmit = async (event) => {
     event.preventDefault();
-    //Array list to store the error messages 
     let errorMessages = [];
-    //Check for empty fields, if there is one, add it to the errorMessages list
     Object.keys(data).forEach((key)=>{
         if(!data[key].trim()){
             const field = key.charAt(0).toUpperCase()+ key.slice(1).replace(/([A-Z])/g, ' $1').trim();
@@ -53,7 +51,6 @@ const Registration = () =>{
         }
     });
 
-        //Do not submit the form since there is an error message
         if(errorMessages.length > 0 ){
             alert(`Please complete the following fields: \n${errorMessages.join('\n')}`);
         }
@@ -84,7 +81,6 @@ const Registration = () =>{
         <div className="registration">
             <Helmet>
                 <title>Registration</title>
-                {/* You can also add common meta tags, links here */}
             </Helmet>
             <h1>Welcome</h1>
             
