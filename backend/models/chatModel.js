@@ -31,7 +31,7 @@ const chatSchema = mongoose.Schema(
 
     pins:[{
       type: mongoose.Schema.Types.ObjectId,
-      ref: "user"
+      ref: "Message"
     }]
   }
 );

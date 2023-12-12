@@ -86,19 +86,19 @@ router.get('/get_messages', async (req, res) => {
         res.status(500).json({ error: 'Internal Server Error' });
     }
 })
-
+/*
 router.get('/get_pins', async (req, res) => {
     /*
         data = {}
 	    axios.get(`/message/get_pins?chatName=Comp307&user=John`, data, config)
         returns: pinned messages as list
     */
-
+/*
     try{
         const { chatName, user } = req.query;
 
         const userInfo = await User.findOne({ username: user });
-        chatInfo = await Chat.findOne({ name: chatName }).populate("pins");
+        chatInfo = await Chat.findOne({ name: chatName }).populate("messages");
 
         if (!userInfo) {
             return res.status(400).json({ error: 'Invalid user' });
@@ -113,6 +113,55 @@ router.get('/get_pins', async (req, res) => {
         res.status(500).json({ error: 'Internal Server Error' });
     }
 })
+*/
+
+
+router.get('/get_pins', async (req, res) => {
+    try {
+        const { chatName, user } = req.query;
+
+        const userInfo = await User.findOne({ username: user });
+        const chatInfo = await Chat.findOne({ name: chatName }).populate("pins"); // Adjust "pins" if necessary
+
+        if (!userInfo) {
+            return res.status(400).json({ error: 'Invalid user' });
+        }
+
+        const pinnedMessages = chatInfo.pins.map(pin => pin.content); // Extract content from each pin
+        console.log(pinnedMessages);
+        res.status(200).json({ pinnedMessages });
+
+    } catch (error) {
+        console.error('Error retrieving pinned messages', error);
+        res.status(500).json({ error: 'Internal Server Error' });
+    }
+});
+
+
+router.get('/get_pins/', async (req, res) => {
+    /*
+        data = {"username": "John"}
+        axios.get("/user/get_user_chat", data, config);
+        returns: id of chats
+    */
+    try {
+        const { chatName, user } = req.query;
+        const regex = new RegExp(user, 'i');
+        const userInfo = await User.findOne({ username: { $regex: regex } });
+        const chatInfo = await Chat.findOne({ name: chatName }).populate("pins");
+
+
+      if (userInfo) {
+        const chats = chatInfo.pins;
+        res.status(200).json({ chats });
+      } else {
+        res.status(404).json({ error: 'User not found' });
+      }
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ error: 'Internal Server Error' });
+    }
+  });
 
 router.post('/un_pin', async (req, res) => {
     /*

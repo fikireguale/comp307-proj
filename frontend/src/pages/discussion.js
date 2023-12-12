@@ -17,6 +17,10 @@ const Discussion =() =>{
     navigate(`/select_discussion/${username}`);
   };
 
+  const toPinnedMsgs = () => {
+    navigate(`/pinned/${username}/${chatName}`);
+  };
+
   const toUserManagement = () => {
     navigate(`/userManagement/${username}/${chatName}`);
     //navigate('/userManagement');
@@ -204,7 +208,7 @@ const Discussion =() =>{
           <section class="discussion_board">
             <header class="channel_name">
               <h1>Channel 1</h1>
-              <button id="pin_btn" onClick={showPinMessages}><i class="fa-solid fa-thumbtack"></i></button>
+              <button id="pin_btn" onClick={toPinnedMsgs}><i class="fa-solid fa-thumbtack"></i></button>
             </header>
 
 
