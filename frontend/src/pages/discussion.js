@@ -18,7 +18,7 @@ const Discussion =() =>{
   };
 
   const toUserManagement = () => {
-    navigate(`/userManagement/${username}`);
+    navigate(`/userManagement/${username}/${chatName}`);
     //navigate('/userManagement');
   };
 
